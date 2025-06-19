@@ -12,8 +12,6 @@ public class CommentsUI : MonoBehaviour
     private void Start()
     {
         _commentSlots = new List<CommentSlotUI>();
-        // 테스트용
-        CommentManager.Instance.GetComments("PostID");
     }
 
     private void Update()
@@ -21,6 +19,7 @@ public class CommentsUI : MonoBehaviour
         // 테스트용
         if(Input.GetKeyDown(KeyCode.A))
         {
+            CommentManager.Instance.GetComments("PostID");
             _commentDTOs = CommentManager.Instance.CurrentPostComments;
 
             Refresh();
@@ -34,6 +33,8 @@ public class CommentsUI : MonoBehaviour
 
     public void Refresh()
     {
+        Debug.Log($"[CommentsUI] Refresh 시작, 댓글 수: {_commentDTOs?.Count ?? -1}");
+
         // 기존 슬롯 제거
         foreach (var slot in _commentSlots)
         {
@@ -44,9 +45,18 @@ public class CommentsUI : MonoBehaviour
         // 새 슬롯 생성
         foreach (CommentDTO dto in _commentDTOs)
         {
+            Debug.Log($"[CommentsUI] 댓글 슬롯 생성: {dto.WriterName} / {dto.Content}");
+
             CommentSlotUI newSlot = Instantiate(_commentSlotUIPrefab, _slotParent);
+            if (newSlot == null)
+            {
+                Debug.LogError("[CommentsUI] 프리팹 인스턴스화 실패");
+                return;
+            }
+
             newSlot.RefreshCommentSlot(dto);
             _commentSlots.Add(newSlot);
         }
     }
+
 }

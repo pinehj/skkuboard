@@ -79,8 +79,11 @@ public class CommentManager : Singleton<CommentManager>
     public async void AddComment(string content)
     {
         string commentID = Guid.NewGuid().ToString();
-        string writerName = AccountManager.Instance.UserAccount.Nickname;
-        string writerEmail = AccountManager.Instance.UserAccount.Email;
+        /*string writerName = AccountManager.Instance.UserAccount.Nickname;
+        string writerEmail = AccountManager.Instance.UserAccount.Email;*/
+        // 테스트용
+        string writerName = "테스트용";
+        string writerEmail = "test@emai.com";
 
         var dto = new CommentDTO
         {

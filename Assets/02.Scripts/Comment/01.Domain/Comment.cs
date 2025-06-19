@@ -6,7 +6,7 @@ public class Comment
     public string Content { get; private set; }
     public readonly string WriterName;
     public readonly string WriterEmail;
-    // Account·Î º¯°æ °¡´É¼º ÀÖÀ½
+    // Accountë¡œ ë³€ê²½ ê°€ëŠ¥ì„± ìˆìŒ
     public List<string> LikedUsers;
     public DateTime PostTime { get; private set; }
 

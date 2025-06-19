@@ -67,7 +67,7 @@ public class CommentRepository
 
         CollectionReference commentCollection = _db.Collection(COLLECTION_NAME).Document(postID).Collection(SUBCOLLECTION_NAME);
 
-        QuerySnapshot snapshot = await commentCollection.OrderByDescending("PostTime").GetSnapshotAsync();
+        QuerySnapshot snapshot = await commentCollection.OrderBy("PostTime").GetSnapshotAsync();
 
         List<CommentDTO> result = new List<CommentDTO>();
         foreach (DocumentSnapshot document in snapshot.Documents)

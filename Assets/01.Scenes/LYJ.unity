@@ -513,14 +513,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1199956773}
-    - target: {fileID: 1593791617904870024, guid: 41a3d45e40c542d48b8b1f1bbb95cf41, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 920
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593791617904870024, guid: 41a3d45e40c542d48b8b1f1bbb95cf41, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -410
-      objectReference: {fileID: 0}
     - target: {fileID: 5300687431984656377, guid: 41a3d45e40c542d48b8b1f1bbb95cf41, type: 3}
       propertyPath: m_Pivot.x
       value: 0

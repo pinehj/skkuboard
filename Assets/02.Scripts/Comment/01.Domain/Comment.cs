@@ -24,7 +24,7 @@ public class Comment
     {
         PostID = dto.PostID;
         CommentID = dto.CommentID;
-        Content = dto.Content;
+        Content = dto.Content;  
         WriterName = dto.WriterName;
         WriterEmail = dto.WriterEmail;
         PostTime = dto.PostTime;

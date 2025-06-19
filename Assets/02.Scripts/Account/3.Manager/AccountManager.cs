@@ -1,10 +1,14 @@
+using Firebase.Auth;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AccountManager : Singleton<AccountManager>
 {
     private Account _userAccount;
     public AccountDTO UserAccount => _userAccount.ToDTO();
+
+    public FirebaseUser User { get; private set; }
 
     private AccountRepository _repository;
 
@@ -20,25 +24,37 @@ public class AccountManager : Singleton<AccountManager>
         _repository = new AccountRepository();
     }
 
-
-    public async Task<bool> TryRegister(string email, string passward, string nickname)
+    
+    public async Task<NewAccountResultMessage> TryRegister(string email, string passward, string nickname)
     {
         AccountDTO newAccount = new AccountDTO(email, CryptoUtil.Encryption(passward, email), nickname);
-        try
-        {
-            await _repository.Register(newAccount);
-            Debug.LogError("회원가입에 성공하였습니다.");
-            return true;    
-        }
-        catch(System.Exception e)
-        {
-            Debug.LogError($"회원가입에 실패하였습니다.: {e}");
-            return false;
-        }
+        return await _repository.Register(newAccount);
     }
 
-    public bool TryLogin()
+    public async Task<NewAccountResultMessage> TryLogin(string email, string passward)
     {
-        return false;
+        AccountDTO loginAccount = new AccountDTO(email, CryptoUtil.Encryption(passward, email), "");
+
+        NewAccountResultMessage result = await _repository.NewLogin(loginAccount);
+        if (result.IsSuccess && result.User != null)
+        {
+            // _userAccount = new Account(result.DTO);
+            User = result.User;
+            Debug.Log($"{User.DisplayName} :: {User.Email} :: {User.UserId}");
+            SceneManager.LoadScene(1);
+        }
+
+        return result;
+    }
+
+    public async Task<AccountResultMessage> TryDeleteAccount()
+    {
+        return await _repository.DeleteAccount(UserAccount);
+    }
+
+    public void LogOut()
+    {
+        _userAccount = null;
+        SceneManager.LoadScene(0);
     }
 }

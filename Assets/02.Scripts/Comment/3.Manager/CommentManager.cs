@@ -43,7 +43,7 @@ public class CommentManager : Singleton<CommentManager>
         _ = LoadAllComments();
     }
 
-    private async Task LoadAllComments()
+    public async Task LoadAllComments()
     {
         List<string> postIDs = await _repository.GetAllPostIDs();
 
@@ -64,19 +64,19 @@ public class CommentManager : Singleton<CommentManager>
         _currentPostComments = entry.Comments;
     }
 
-    public async void AddComment(string postID, string content)
+    public async void AddComment(string content)
     {
         string commentID = Guid.NewGuid().ToString();
-        /*string writerName = LoginManager.Instance.CurrentUserName;
-        string writerEmail = LoginManager.Instance.CurrentUserEmail;*/
+        string writerName = AccountManager.Instance.UserAccount.Nickname;
+        string writerEmail = AccountManager.Instance.UserAccount.Email;
 
         var dto = new CommentDTO
         {
-            PostID = postID,
+            PostID = _currentPostID,
             CommentID = commentID,
-            Content = content,/*
+            Content = content,
             WriterName = writerName,
-            WriterEmail = writerEmail,*/
+            WriterEmail = writerEmail,
             PostTime = DateTime.Now
         };
 
@@ -85,5 +85,21 @@ public class CommentManager : Singleton<CommentManager>
         // 로컬에도 반영
         Comment newComment = new Comment(dto);
         _currentPostComments.Add(newComment);
+    }
+
+    public async void DeleteComment(string commentID)
+    {
+        await _repository.DeleteComment(_currentPostID, commentID);
+
+        Comment deleteComment = _currentPostComments.Find(c => c.CommentID == commentID);
+        if (deleteComment != null)
+        {
+            _currentPostComments.Remove(deleteComment);
+            Debug.Log($"댓글 삭제 완료: {commentID}");
+        }
+        else
+        {
+            Debug.LogWarning($"삭제하려는 댓글을 로컬 목록에서 찾을 수 없습니다: {commentID}");
+        }
     }
 }

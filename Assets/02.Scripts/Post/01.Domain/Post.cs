@@ -11,12 +11,16 @@ public class Post
 
     //private List<User> _likes;
 
-    public Post(Guid iD, string writer, DateTime postTime, string title, string content)
+    public Post(Guid iD, string writer, DateTime postTime, string content)
     {
+        var contentSpecification = new ContentSpecification();
+        if (!contentSpecification.IsSatisfiedBy(content))
+        {
+            throw new Exception(contentSpecification.ErrorMassage);
+        }
         ID = iD;
-        Writer = writer;
+        Writer = writer;    
         PostTime = postTime;
-        Title = title;
         Content = content;
     }
 

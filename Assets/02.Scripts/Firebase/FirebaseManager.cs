@@ -2,6 +2,7 @@ using UnityEngine;
 using Firebase.Extensions;
 using Firebase.Firestore;
 using Firebase;
+using System;
 
 public class FirebaseManager : Singleton<FirebaseManager>
 {
@@ -11,8 +12,10 @@ public class FirebaseManager : Singleton<FirebaseManager>
     private FirebaseFirestore _db;
     public FirebaseFirestore DB => _db;
 
+    public event Action OnFirebaseLinked;
     protected override void Awake()
     {
+        base.Awake();
         Init();
     }
 
@@ -25,6 +28,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
                 _app = FirebaseApp.DefaultInstance;
                 _db = FirebaseFirestore.DefaultInstance;
                 Debug.Log("파이어베이스 연동 완료");
+                OnFirebaseLinked?.Invoke();
             }
             else
             {

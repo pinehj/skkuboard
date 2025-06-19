@@ -1,22 +1,33 @@
+using Firebase.Firestore;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
+[FirestoreData]
 public class PostDTO
 {
-    public readonly Guid ID;
-    public readonly string Writer;
-    public readonly DateTime PostTime;
-    public readonly string Title;
-    public readonly string Content;
+    [FirestoreProperty]
+    public string ID { get; private set; }
+    [FirestoreProperty]
+    public User Writer { get; private set; }
+    [FirestoreProperty]
+    public DateTime PostTime { get; private set; }
+    [FirestoreProperty]
+    public string Content { get; private set; }
+    [FirestoreProperty]
+    public List<User> Likes { get; private set; }
 
-    //private List<User> _likes;
+
+    public PostDTO()
+    {
+
+    }
 
     public PostDTO(Post post)
     {
         ID = post.ID;
         Writer = post.Writer;
         PostTime = post.PostTime;
-        Title = post.Title;
         Content = post.Content;
+        Likes = post.Likes;
     }
 }

@@ -1,7 +1,11 @@
+using Firebase.Firestore;
 using UnityEngine;
 
-public struct Writer
+[FirestoreData]
+public struct User
 {
-    public string email;
-    public string nickname;
+    [FirestoreProperty]
+    public string Email { get; set; }
+    [FirestoreProperty]
+    public string Nickname { get; set; }
 }

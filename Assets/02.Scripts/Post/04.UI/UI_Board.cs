@@ -7,6 +7,8 @@ public class UI_Board : MonoBehaviour
     [SerializeField] private Transform _slotContainer;
     [SerializeField] private UI_PostSlot _slotPrefab;
     [SerializeField] private Button _writeButton;
+    [SerializeField] private Button _backButton;
+
     private void OnEnable()
     {
         Refresh();
@@ -27,6 +29,6 @@ public class UI_Board : MonoBehaviour
 
     public void WritePost()
     {
-
+        
     }
 }

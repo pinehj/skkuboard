@@ -9,7 +9,12 @@ public class CommentManager : MonoBehaviour
 {
     // 싱글톤 추가
     public static CommentManager Instance;
-    private List<Comment> _currentPostComment;
+
+    private string _currentPostID;
+    private List<Comment> _currentPostComments;
+    public List<Comment> CurrentPostComments => _currentPostComments;
+
+    private CommentRepository _repository;
 
     private void Awake()
     {
@@ -19,6 +24,8 @@ public class CommentManager : MonoBehaviour
 
     private void Init()
     {
+        _repository = new CommentRepository();
 
+        _repository.GetComments();
     }
 }

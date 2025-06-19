@@ -20,6 +20,16 @@ public class Comment
         PostTime = DateTime.Now;
     }
 
+    public Comment(CommentDTO dto)
+    {
+        PostID = dto.PostID;
+        CommentID = dto.CommentID;
+        Content = dto.Content;
+        WriterName = dto.WriterName;
+        WriterEmail = dto.WriterEmail;
+        PostTime = dto.PostTime;
+    }
+
     public void EditComment(string content)
     {
         Content = content;

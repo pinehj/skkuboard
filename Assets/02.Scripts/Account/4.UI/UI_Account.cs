@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -42,7 +43,9 @@ public class UI_Account : MonoBehaviour
         _passwardSpecification = new PasswardSpecification();
     }
 
-    public void Register()
+    public void OnRegister() => Register();
+    
+    public async Task Register()
     {
         string email = RegisterEmailInputField.text;
         if (!_emailSpecification.IsSatisfiedBy(email))
@@ -76,7 +79,7 @@ public class UI_Account : MonoBehaviour
             return;
         }
 
-        if (!AccountManager.Instance.TryRegister(email, nickname, passward))
+        if (await AccountManager.Instance.TryRegister(email, nickname, passward))
         {
             RegisterMessageText.text = "회원가입에 실패하였습니다.";
             return;
@@ -88,7 +91,7 @@ public class UI_Account : MonoBehaviour
 
     public void Login()
     {
-        
+
     }
 
     public void OnRegisterButton()

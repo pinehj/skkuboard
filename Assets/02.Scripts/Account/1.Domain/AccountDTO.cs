@@ -1,10 +1,18 @@
-using UnityEngine;
+using Firebase.Firestore;
 
+
+[FirestoreData]
 public class AccountDTO
 {
-    public readonly string Email;
-    public readonly string Passward;
-    public readonly string Nickname;
+    
+    [FirestoreProperty("email")] public string Email { get; set;}
+    [FirestoreProperty("passward")] public string Passward { get; set; }
+    [FirestoreProperty("nickname")] public string Nickname { get; set; }
+
+    public AccountDTO()
+    {
+
+    }
 
     public AccountDTO(string email, string passward, string nickname)
     {

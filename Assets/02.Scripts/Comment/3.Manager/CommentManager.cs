@@ -30,10 +30,12 @@ public class CommentManager : Singleton<CommentManager>
 
     private CommentRepository _repository;
 
-    protected override void Awake()
+    public Action OnLoadAllComments;
+
+    protected override void Start()
     {
-        base.Awake();
-        Init();
+        base.Start();
+        FirebaseManager.Instance.OnFirebaseLinked += Init;
     }
 
     private void Init()
@@ -59,6 +61,7 @@ public class CommentManager : Singleton<CommentManager>
         }
 
         Debug.Log($"총 {postIDs.Count}개의 게시글 댓글 불러오기 완료");
+        OnLoadAllComments?.Invoke();
     }
 
     public void GetComments(string postID)

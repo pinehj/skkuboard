@@ -21,7 +21,7 @@ public class CommentPostUI : MonoBehaviour
 
         if (string.IsNullOrEmpty(content))
         {
-            Debug.LogWarning("댓글 내용이 비어 있습니다.");
+            Debug.Log("댓글 내용이 비어 있습니다.");
             return;
         }
 

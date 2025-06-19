@@ -3,29 +3,64 @@ using System.Collections.Generic;
 
 public class Post
 {
-    public readonly Guid ID;
-    public readonly string Writer;
+    public readonly string ID;
+    public readonly User Writer;
     public DateTime PostTime { get; private set; }
     public string Title { get; private set; }
     public string Content { get; private set; }
+    // 접근제한자 ..
+    public List<User> Likes;
 
-    //private List<User> _likes;
+    public Post(string id, User writer, string content, List<User> likes)
+    {
+        // 글 내용 검증
+        var contentSpecification = new ContentSpecification();
+        if (!contentSpecification.IsSatisfiedBy(content))
+        {
+            throw new Exception(contentSpecification.ErrorMassage);
+        }
 
-    public Post(Guid iD, string writer, DateTime postTime, string content)
+        // 닉네임 검증
+        var nicknameSpecification = new NicknameSpecification();
+        //닉네임명세가 명세 인터페이스 구현을 안하고 있음. 함수명도 다름
+        if (!nicknameSpecification.IsSatifiedBy(writer.Nickname))
+        {
+            throw new Exception(contentSpecification.ErrorMassage);
+        }
+
+        //email 검증
+        var emailSpecification = new EmailSpecification();
+        if (!emailSpecification.IsSatisfiedBy(writer.Email))
+        {
+            throw new Exception(contentSpecification.ErrorMassage);
+        }
+
+        ID = id;
+        Writer = writer;
+        PostTime = DateTime.Now;
+        Content = content;
+
+        Likes = likes;
+    }
+
+    public PostDTO ToDTO()
+    {
+        return new PostDTO(this);
+    }
+
+    public void ModifyContent(string content)
     {
         var contentSpecification = new ContentSpecification();
         if (!contentSpecification.IsSatisfiedBy(content))
         {
             throw new Exception(contentSpecification.ErrorMassage);
         }
-        ID = iD;
-        Writer = writer;    
-        PostTime = postTime;
+
         Content = content;
     }
 
-    public PostDTO ToDTO()
+    public void AddLike(User user)
     {
-        return new PostDTO(this);
+        Likes.Add(user);
     }
 }

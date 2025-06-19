@@ -1,24 +1,18 @@
 using UnityEngine;
 using Firebase.Extensions;
+using Firebase.Firestore;
 using Firebase;
 
-public class FirebaseManager : MonoBehaviour
+public class FirebaseManager : Singleton<FirebaseManager>
 {
-    public static FirebaseManager Instance;
+    private FirebaseApp _app;
+    public FirebaseApp APP => _app;
 
-    public FirebaseApp _app;
+    private FirebaseFirestore _db;
+    public FirebaseFirestore DB => _db;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         Init();
     }
 
@@ -26,9 +20,10 @@ public class FirebaseManager : MonoBehaviour
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
             var dependencyStatus = task.Result;
-            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            if (dependencyStatus == DependencyStatus.Available)
             {
                 _app = FirebaseApp.DefaultInstance;
+                _db = FirebaseFirestore.DefaultInstance;
                 Debug.Log("파이어베이스 연동 완료");
             }
             else

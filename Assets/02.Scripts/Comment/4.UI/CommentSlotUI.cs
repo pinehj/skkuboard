@@ -1,16 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class CommentSlotUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI _writerName;
+    [SerializeField] private TextMeshProUGUI _postTime;
+    [SerializeField] private TextMeshProUGUI _content;
 }

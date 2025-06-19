@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 public struct PostAndComments
 {
@@ -61,5 +62,28 @@ public class CommentManager : Singleton<CommentManager>
         _currentPostID = postID;
         var entry = _postAndComments.Find(p => p.PostID == postID);
         _currentPostComments = entry.Comments;
+    }
+
+    public async void AddComment(string postID, string content)
+    {
+        string commentID = Guid.NewGuid().ToString();
+        /*string writerName = LoginManager.Instance.CurrentUserName;
+        string writerEmail = LoginManager.Instance.CurrentUserEmail;*/
+
+        var dto = new CommentDTO
+        {
+            PostID = postID,
+            CommentID = commentID,
+            Content = content,/*
+            WriterName = writerName,
+            WriterEmail = writerEmail,*/
+            PostTime = DateTime.Now
+        };
+
+        await _repository.AddComment(dto);
+
+        // 로컬에도 반영
+        Comment newComment = new Comment(dto);
+        _currentPostComments.Add(newComment);
     }
 }

@@ -423,6 +423,7 @@ GameObject:
   - component: {fileID: 3645629042778310541}
   - component: {fileID: 5626127265931731283}
   - component: {fileID: 1592066447318700254}
+  - component: {fileID: 4539832223142673170}
   m_Layer: 5
   m_Name: CommentSlotUI
   m_TagString: Untagged
@@ -530,3 +531,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &4539832223142673170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817717831319070731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb497e25961db8e4aa10d346b0cb624c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _writerName: {fileID: 6625396634838706445}
+  _postTime: {fileID: 4136206465223500268}
+  _content: {fileID: 4718198000156399528}

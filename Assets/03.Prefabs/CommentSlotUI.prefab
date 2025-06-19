@@ -255,7 +255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6438691590668274789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4539832223142673170}
+        m_TargetAssemblyTypeName: CommentSlotUI, Assembly-CSharp
+        m_MethodName: OnDeleteButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4999684762738284939
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,3 +679,4 @@ MonoBehaviour:
   _writerName: {fileID: 6625396634838706445}
   _postTime: {fileID: 4136206465223500268}
   _content: {fileID: 4718198000156399528}
+  _deleteButton: {fileID: 9012858786432468347}

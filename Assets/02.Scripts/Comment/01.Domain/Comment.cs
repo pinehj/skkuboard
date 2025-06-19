@@ -20,8 +20,19 @@ public class Comment
         PostTime = DateTime.Now;
     }
 
-    public void EditComment(string content)
+    public Comment(CommentDTO dto)
+    {
+        PostID = dto.PostID;
+        CommentID = dto.CommentID;
+        Content = dto.Content;  
+        WriterName = dto.WriterName;
+        WriterEmail = dto.WriterEmail;
+        PostTime = dto.PostTime;
+    }
+
+    // 카톡게시판에 댓글 수정기능 없음
+    /*public void EditComment(string content)
     {
         Content = content;
-    }
+    }*/
 }

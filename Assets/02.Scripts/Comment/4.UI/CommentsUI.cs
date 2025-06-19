@@ -17,7 +17,7 @@ public class CommentsUI : MonoBehaviour
     private void Update()
     {
         // 테스트용
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.F5))
         {
             CommentManager.Instance.GetComments("PostID");
             _commentDTOs = CommentManager.Instance.CurrentPostComments;

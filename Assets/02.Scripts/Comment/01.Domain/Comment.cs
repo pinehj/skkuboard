@@ -30,8 +30,9 @@ public class Comment
         PostTime = dto.PostTime;
     }
 
-    public void EditComment(string content)
+    // 카톡게시판에 댓글 수정기능 없음
+    /*public void EditComment(string content)
     {
         Content = content;
-    }
+    }*/
 }

@@ -13,6 +13,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
 
     protected override void Awake()
     {
+        base.Awake();
         Init();
     }
 

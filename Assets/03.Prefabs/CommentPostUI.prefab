@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 8020554386301094656}
   - component: {fileID: 5837481090912819773}
   - component: {fileID: 3198369528543317796}
+  - component: {fileID: 7626378440126254792}
   m_Layer: 5
   m_Name: CommentPostUI
   m_TagString: Untagged
@@ -764,6 +765,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7626378440126254792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216458581039004627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18435370d884d0545892d834c9f717d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 4123727957574567363}
+  _postButton: {fileID: 1836991859504663465}
+  _likeButton: {fileID: 7159954957980604508}
 --- !u!1 &7156076007893962500
 GameObject:
   m_ObjectHideFlags: 0

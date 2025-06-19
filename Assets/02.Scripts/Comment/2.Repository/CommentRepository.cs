@@ -4,13 +4,13 @@ using UnityEngine;
 using Firebase;
 using Firebase.Firestore;
 
-public class CommentRepository : MonoBehaviour
+public class CommentRepository 
 {
     private const string COLLECTION_NAME = "Comments";
     private const string SUBCOLLECTION_NAME = "CommentList";
     private FirebaseFirestore _db;
 
-    private void Start()
+    public void Init()
     {
         _db = FirebaseManager.Instance.DB;
     }

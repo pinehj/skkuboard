@@ -24,7 +24,7 @@ public class CommentManager : Singleton<CommentManager>
 {
     private string _currentPostID;
     private List<Comment> _currentPostComments;
-    public List<Comment> CurrentPostComments => _currentPostComments;
+    public List<CommentDTO> CurrentPostComments => _currentPostComments.ConvertAll(c => new CommentDTO(c));
 
     private List<PostAndComments> _postAndComments;
 
@@ -32,13 +32,16 @@ public class CommentManager : Singleton<CommentManager>
 
     protected override void Awake()
     {
+        base.Awake();
         Init();
     }
 
     private void Init()
     {
         _repository = new CommentRepository();
+        _repository.Init();
         _postAndComments = new List<PostAndComments>();
+        _currentPostComments = new List<Comment>();
 
         _ = LoadAllComments();
     }
@@ -52,6 +55,7 @@ public class CommentManager : Singleton<CommentManager>
             List<CommentDTO> commentDTOs = await _repository.GetComments(postID);
             List<Comment> comments = commentDTOs.ConvertAll(dto => new Comment(dto));
             _postAndComments.Add(new PostAndComments(postID, comments));
+            Debug.Log($"로드된 PostID: {postID} / 댓글 수: {comments.Count}");
         }
 
         Debug.Log($"총 {postIDs.Count}개의 게시글 댓글 불러오기 완료");
@@ -61,7 +65,15 @@ public class CommentManager : Singleton<CommentManager>
     {
         _currentPostID = postID;
         var entry = _postAndComments.Find(p => p.PostID == postID);
-        _currentPostComments = entry.Comments;
+        if (entry.Comments == null)
+        {
+            Debug.LogWarning($"PostID '{postID}'에 대한 댓글 데이터가 없습니다.");
+            _currentPostComments = new List<Comment>();
+        }
+        else
+        {
+            _currentPostComments = entry.Comments;
+        }
     }
 
     public async void AddComment(string content)

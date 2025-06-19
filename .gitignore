@@ -2,6 +2,10 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+# 코드 에디터 설정 폴더
+.idea
+.vscode
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/

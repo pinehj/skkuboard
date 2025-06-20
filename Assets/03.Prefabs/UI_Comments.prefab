@@ -476,6 +476,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5300687431984656377}
     m_Modifications:
+    - target: {fileID: 1212581717864753064, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
+    - target: {fileID: 1212581717864753064, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1971260709576910631, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
     - target: {fileID: 2221191248773293544, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_SizeDelta.x
       value: -220
@@ -484,6 +492,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 2993829139776699083, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
+    - target: {fileID: 2993829139776699083, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1971260709576910631, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
     - target: {fileID: 4683770876518711385, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -580,6 +596,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9150943
       objectReference: {fileID: 0}
+    - target: {fileID: 5122093984894006156, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
+    - target: {fileID: 5122093984894006156, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1971260709576910631, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
     - target: {fileID: 6216458581039004627, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_Name
       value: CommentPostUI

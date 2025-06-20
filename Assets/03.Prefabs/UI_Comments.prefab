@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00054131885}
+  m_AnchoredPosition: {x: 0, y: 76.73225}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9107588956488002707
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7889447951108096752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200a8f9f256e9fd4a99004df95d47138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _commentPost: {fileID: 0}
   _commentSlotUIPrefab: {fileID: 4539832223142673170, guid: 03e5df55a271b3e41a7bcbfac1dec32b, type: 3}
   _slotParent: {fileID: 1861480067009069396}
 --- !u!1 &8333242861946930105

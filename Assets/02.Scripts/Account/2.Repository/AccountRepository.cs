@@ -93,7 +93,7 @@ public class AccountRepository
     {
         try
         {
-            AuthResult result = await FirebaseManager.Instance.Auth.SignInWithEmailAndPasswordAsync(accountDTO.Email, accountDTO.Passward);
+            AuthResult result = await _auth.SignInWithEmailAndPasswordAsync(accountDTO.Email, accountDTO.Passward);
             return new AccountResultMessage() { MessageText = "로그인에 성공하였습니다.", IsSuccess = true };
         }
         catch (FirebaseException e)

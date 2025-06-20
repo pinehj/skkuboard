@@ -80,7 +80,7 @@ public class UI_Account : MonoBehaviour
             return;
         }
 
-        NewAccountResultMessage result = await AccountManager.Instance.TryRegister(email, passward, nickname);
+        AccountResultMessage result = await AccountManager.Instance.TryRegister(email, passward, nickname);
         RegisterMessageText.text = result.MessageText;
 
         if (result.IsSuccess)
@@ -109,7 +109,7 @@ public class UI_Account : MonoBehaviour
             return;
         }
 
-        NewAccountResultMessage result = await AccountManager.Instance.TryLogin(email, passward);
+        AccountResultMessage result = await AccountManager.Instance.TryLogin(email, passward);
         LoginMessageText.text = result.MessageText;
     }
 

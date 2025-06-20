@@ -5,10 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AccountManager : Singleton<AccountManager>
 {
-    private Account _userAccount;
-    public AccountDTO UserAccount => _userAccount.ToDTO();
-
-    public FirebaseUser User { get; private set; }
+    public AccountDTO User { get; private set; }
 
     private AccountRepository _repository;
 
@@ -25,22 +22,21 @@ public class AccountManager : Singleton<AccountManager>
     }
 
     
-    public async Task<NewAccountResultMessage> TryRegister(string email, string passward, string nickname)
+    public async Task<AccountResultMessage> TryRegister(string email, string passward, string nickname)
     {
         AccountDTO newAccount = new AccountDTO(email, CryptoUtil.Encryption(passward, email), nickname);
         return await _repository.Register(newAccount);
     }
 
-    public async Task<NewAccountResultMessage> TryLogin(string email, string passward)
+    public async Task<AccountResultMessage> TryLogin(string email, string passward)
     {
         AccountDTO loginAccount = new AccountDTO(email, CryptoUtil.Encryption(passward, email), "");
 
-        NewAccountResultMessage result = await _repository.NewLogin(loginAccount);
-        if (result.IsSuccess && result.User != null)
+        AccountResultMessage result = await _repository.Login(loginAccount);
+        if (result.IsSuccess)
         {
-            // _userAccount = new Account(result.DTO);
-            User = result.User;
-            Debug.Log($"{User.DisplayName} :: {User.Email} :: {User.UserId}");
+            User = new AccountDTO(_repository.User.Email, "PASSWARD", _repository.User.DisplayName);
+            Debug.Log($"{User.Nickname} :: {User.Email}");
             SceneManager.LoadScene(1);
         }
 
@@ -49,12 +45,13 @@ public class AccountManager : Singleton<AccountManager>
 
     public async Task<AccountResultMessage> TryDeleteAccount()
     {
-        return await _repository.DeleteAccount(UserAccount);
+        return await _repository.DeleteAccount();
     }
 
     public void LogOut()
     {
-        _userAccount = null;
+        User = null;
+        _repository.Logout();
         SceneManager.LoadScene(0);
     }
 }

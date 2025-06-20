@@ -13,6 +13,10 @@ public class UI_PostDetail : MonoBehaviour
 
     public async void Refresh()
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         PostDTO refreshedDto = await PostManager.Instance.TryLoadPost(_postDTO.ID);
         if(refreshedDto != null)
         {

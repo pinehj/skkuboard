@@ -26,10 +26,8 @@ public class UI_PostSlot : MonoBehaviour
         _likesCountText.text = $"좋아요 {postDTO.Likes.Count}";
         if (postDTO.Likes.Contains(new User()
         {
-            Email = "좋아요이메일",
-            Nickname = "좋아요한사람"
-            //Email = AccountManager.Instance.UserAccount.Email,
-            //Nickname = AccountManager.Instance.UserAccount.Nickname
+            Email = AccountManager.Instance.User.Email,
+            Nickname = AccountManager.Instance.User.Nickname
         }))
         {
             Color color = _likeButton.image.color;
@@ -45,8 +43,8 @@ public class UI_PostSlot : MonoBehaviour
 
         if(postDTO.Writer.Equals(new User()
         {
-            Email = "ss@sss.com",
-            Nickname = "ss"
+            Email = AccountManager.Instance.User.Email,
+            Nickname = AccountManager.Instance.User.Nickname
         }))
         {
             _modifyButton.gameObject.SetActive(true);
@@ -64,10 +62,8 @@ public class UI_PostSlot : MonoBehaviour
     {
         PostDTO updatedPostDTO = await PostManager.Instance.TryLike(_postDTO.ID, new User()
         {
-            Email = "@master.com",
-            Nickname = "master"
-            //Email = AccountManager.Instance.UserAccount.Email,
-            //Nickname = AccountManager.Instance.UserAccount.Nickname
+            Email = AccountManager.Instance.User.Email,
+            Nickname = AccountManager.Instance.User.Nickname
         });
 
         if(updatedPostDTO != null)

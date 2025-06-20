@@ -14,10 +14,10 @@ public class PostManager : Singleton<PostManager>
 
     public event Action OnDataChanged;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        FirebaseManager.Instance.OnFirebaseLinked += Init;
+        base.Awake();
+        Init();
     }
     private void Init()
     {

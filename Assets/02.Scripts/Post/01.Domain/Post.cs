@@ -95,7 +95,7 @@ public class Post
         Content = content;
     }
 
-    public void AddLike(User user)
+    /*public void AddLike(User user)
     {
         // 같은 유저 있을 경우 추가 x
         if (!Likes.Exists(u => u.Email == user.Email))
@@ -107,7 +107,7 @@ public class Post
     public void CancelLike(User user)
     {
         Likes.RemoveAll(u => u.Email == user.Email);
-    }
+    }*/
 
     public void ToggleLike(User user)
     {

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Firebase;
 using Firebase.Auth;
 using UnityEngine;
 
@@ -25,6 +26,13 @@ public class AccountRepository
         _auth = FirebaseAuth.DefaultInstance;
         _auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
+    }
+
+    private void OnDestroy()
+    {
+        Logout();
+        _auth.StateChanged -= AuthStateChanged;
+        _auth = null;
     }
 
     private void AuthStateChanged(object sender, EventArgs eventArgs)
@@ -60,18 +68,22 @@ public class AccountRepository
         try
         {
             AuthResult result = await _auth.CreateUserWithEmailAndPasswordAsync(accountDTO.Email, accountDTO.Passward);
+            if (result.User != null)
+            {
+                await result.User.UpdateUserProfileAsync(new UserProfile { DisplayName = accountDTO.Nickname });
+            }
             return new AccountResultMessage()
             {
                 MessageText = $"회원 가입에 성공하였습니다.",
                 IsSuccess = true
             };
         }
-        catch (Exception e)
+        catch (FirebaseException e)
         {
             Debug.LogError(e);
             return new AccountResultMessage()
             {
-                MessageText = $"회원 가입에 실패하였습니다.\n {e.Message}",
+                MessageText = $"회원 가입에 실패하였습니다.\n {e.ErrorCode}-{e.Message}",
                 IsSuccess = false
             };
         }
@@ -84,7 +96,7 @@ public class AccountRepository
             AuthResult result = await FirebaseManager.Instance.Auth.SignInWithEmailAndPasswordAsync(accountDTO.Email, accountDTO.Passward);
             return new AccountResultMessage() { MessageText = "로그인에 성공하였습니다.", IsSuccess = true };
         }
-        catch (Exception e)
+        catch (FirebaseException e)
         {
             Debug.LogError(e);
             return new AccountResultMessage() { MessageText = $"이메일 혹은 비밀번호가 잘못되었습니다.", IsSuccess = false };
@@ -98,16 +110,9 @@ public class AccountRepository
             Debug.LogError("로그인 상태가 아닙니다.");
         }
 
-        try
-        {
-            _auth.SignOut();
-            _user = null;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
-            throw;
-        }
+        _auth.SignOut();
+        _user = null;
+        Debug.Log("로그아웃 완료");
     }
 
     public async Task<AccountResultMessage> DeleteAccount()
@@ -120,19 +125,13 @@ public class AccountRepository
         try
         {
             await _user.DeleteAsync();
+            Debug.Log("계정이 삭제되었습니다.");
             return new AccountResultMessage() { MessageText = "계정이 삭제되었습니다.", IsSuccess = true };
         }
-        catch (Exception e)
+        catch (FirebaseException e)
         {
             Debug.LogError(e);
             return new AccountResultMessage() { MessageText = e.Message, IsSuccess = false };
         }
-    }
-
-    private void OnDestroy()
-    {
-        Logout();
-        _auth.StateChanged -= AuthStateChanged;
-        _auth = null;
     }
 }

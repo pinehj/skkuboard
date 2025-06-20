@@ -1228,6 +1228,7 @@ MonoBehaviour:
   _commentPost: {fileID: 693581268}
   _commentSlotUIPrefab: {fileID: 4539832223142673170, guid: 03e5df55a271b3e41a7bcbfac1dec32b, type: 3}
   _slotParent: {fileID: 693581267}
+  _commentScrollRect: {fileID: 0}
 --- !u!222 &165772708189960634
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2642,8 +2643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 423.32498, y: -75}
-  m_SizeDelta: {x: 599.23, y: 0}
+  m_AnchoredPosition: {x: 413.395, y: -75}
+  m_SizeDelta: {x: 579.37, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8851111953697485416
 MonoBehaviour:

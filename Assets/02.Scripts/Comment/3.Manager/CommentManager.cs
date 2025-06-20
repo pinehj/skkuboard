@@ -81,6 +81,12 @@ public class CommentManager : Singleton<CommentManager>
         OnLoadPostComments?.Invoke();
     }
 
+    public int PostCommentNumbers(string postID)
+    {
+        var entry = _postAndComments.Find(p => p.PostID == postID);
+        return entry.Comments?.Count ?? 0;
+    }
+
     public async Task AddComment(string content)
     {
         string commentID = Guid.NewGuid().ToString();

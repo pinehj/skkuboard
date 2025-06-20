@@ -489,7 +489,7 @@ PrefabInstance:
     - target: {fileID: 8868242456981421949, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       propertyPath: _commentsUI
       value: 
-      objectReference: {fileID: 649744252}
+      objectReference: {fileID: 0}
     - target: {fileID: 9029139882875634507, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -605,9 +605,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2231424660764693222, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 649744253}
-    - targetCorrespondingSourceObject: {fileID: 2231424660764693222, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 649744252}
   m_SourcePrefab: {fileID: 100100000, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
 --- !u!114 &587855314 stripped
 MonoBehaviour:
@@ -630,21 +627,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9029139882875634507, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
   m_PrefabInstance: {fileID: 367864473}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &649744252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649744250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 200a8f9f256e9fd4a99004df95d47138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _commentPost: {fileID: 122998019}
-  _commentSlotUIPrefab: {fileID: 4539832223142673170, guid: 03e5df55a271b3e41a7bcbfac1dec32b, type: 3}
-  _slotParent: {fileID: 1519983197}
 --- !u!114 &649744253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,7 +1965,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8165972151551804980, guid: dbc4baaabefbff24c9aad362cee3fa58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 649744251}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8737958662690161493, guid: dbc4baaabefbff24c9aad362cee3fa58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3372949232581858979}
   m_SourcePrefab: {fileID: 100100000, guid: dbc4baaabefbff24c9aad362cee3fa58, type: 3}
 --- !u!114 &3372949232581858977 stripped
 MonoBehaviour:
@@ -1996,6 +1981,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1596ae95fe34ac7469b83a4288f89018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3372949232581858978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8737958662690161493, guid: dbc4baaabefbff24c9aad362cee3fa58, type: 3}
+  m_PrefabInstance: {fileID: 3372949232581858976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3372949232581858979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3372949232581858978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200a8f9f256e9fd4a99004df95d47138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _commentPost: {fileID: 122998019}
+  _commentSlotUIPrefab: {fileID: 4539832223142673170, guid: 03e5df55a271b3e41a7bcbfac1dec32b, type: 3}
+  _slotParent: {fileID: 1519983197}
 --- !u!222 &3959131421142404698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2184,6 +2189,7 @@ MonoBehaviour:
   _postTimeText: {fileID: 2713943321434248594}
   _contentText: {fileID: 840883154681148545}
   _likesCountText: {fileID: 7588391251594288045}
+  _commentsCountText: {fileID: 0}
   _modifyButton: {fileID: 5984446868807727915}
   _deleteButton: {fileID: 7438053280777949566}
   _likeButton: {fileID: 587855314}

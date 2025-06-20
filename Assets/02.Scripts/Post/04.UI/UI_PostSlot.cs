@@ -10,6 +10,7 @@ public class UI_PostSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _postTimeText;
     [SerializeField] private TextMeshProUGUI _contentText;
     [SerializeField] private TextMeshProUGUI _likesCountText;
+    [SerializeField] private TextMeshProUGUI _commentsCountText;
 
     [SerializeField] private Button _modifyButton;
     [SerializeField] private Button _deleteButton;
@@ -23,6 +24,7 @@ public class UI_PostSlot : MonoBehaviour
         _postTimeText.text = postDTO.PostTime.ToString();
         _contentText.text = postDTO.Content;
         _likesCountText.text = $"좋아요 {postDTO.Likes.Count}";
+        //_commentsCountText.text = $"{CommentManager.Instance.PostCommentNumbers(_postDTO.ID)} 댓글";
         if (postDTO.Likes.Contains(new User()
         {
             Email = AccountManager.Instance.User.Email,

@@ -11,15 +11,13 @@ public class CommentsUI : MonoBehaviour
 
     private List<CommentDTO> _commentDTOs;
 
-    // 테스트용
-    private bool Turn = true;
-
     private void Start()
     {
         _commentSlots = new List<CommentSlotUI>();
 
 
         CommentManager.Instance.OnLoadPostComments += Refresh;
+        Debug.Log("refresh is added to loadpostcomments");
     }
 
     private void Update()
@@ -48,7 +46,6 @@ public class CommentsUI : MonoBehaviour
 
     public void Refresh()
     {
-        // 테스트용, 나중에는 id 제대로 받기
         _commentDTOs = CommentManager.Instance.CurrentPostComments;
         Debug.Log($"[CommentsUI] Refresh 시작, 댓글 수: {_commentDTOs?.Count ?? -1}");
 

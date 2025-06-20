@@ -124,6 +124,7 @@ MonoBehaviour:
   _postTimeText: {fileID: 2713943320931727853}
   _contentText: {fileID: 840883155051026686}
   _likesCountText: {fileID: 7588391251896547282}
+  _commentsCountText: {fileID: 4156110233897093602}
   _modifyButton: {fileID: 5984446869310773076}
   _deleteButton: {fileID: 7438053281147845889}
   _likeButton: {fileID: 5753964502780609627}

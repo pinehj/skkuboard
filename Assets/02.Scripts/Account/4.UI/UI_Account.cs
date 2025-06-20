@@ -8,6 +8,7 @@ public class UI_Account : MonoBehaviour
     [Header("[Panels]")]
     public GameObject LoginPanel;
     public GameObject RegisterPanel;
+    public GameObject FindPasswardPanel;
     public GameObject AccountDeletePopup;
 
 
@@ -23,6 +24,11 @@ public class UI_Account : MonoBehaviour
     public TMP_InputField RegisterPasswardInputField;
     public TMP_InputField RegisterPasswardCheckInputField;
     public TextMeshProUGUI RegisterMessageText;
+
+    [Header("[Find Passward]")]
+    public TMP_InputField FindEmailInputField;
+    public TMP_InputField FindnewPasswardInputField;
+    public TMP_InputField FindnewPasswardCheckInputField;
 
 
     private EmailSpecification _emailSpecification;
@@ -113,16 +119,32 @@ public class UI_Account : MonoBehaviour
         LoginMessageText.text = result.MessageText;
     }
 
+    public async Task FindPassward()
+    {
+        string email = FindEmailInputField.text;
+        string newPassward = FindnewPasswardInputField.text;
+        AccountResultMessage result = await AccountManager.Instance.TryChangePassward(email, newPassward);
+    }
+
+    public void OnFindPasswardButton()
+    {
+        // LoginPanel.SetActive(false);
+        // FindPasswardPanel.SetActive(true);
+        LoginMessageText.text = "아직 개발 중인 기능입니다.";
+    }
+
     public void OnRegisterButton()
     {
         LoginPanel.SetActive(false);
         RegisterPanel.SetActive(true);
+        RegisterMessageText.text = "";
     }
 
     public void OnBackButton()
     {
         LoginPanel.SetActive(true);
         RegisterPanel.SetActive(false);
+        LoginMessageText.text = "";
 
         LoginEmailInputField.text = RegisterEmailInputField.text;
     }

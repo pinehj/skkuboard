@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CommentsUI : MonoBehaviour
 {
@@ -97,6 +98,7 @@ public class CommentsUI : MonoBehaviour
             newSlot.OnRequestDelete += HandleDeleteSlotRequest;
             _commentSlots.Add(newSlot);
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(_slotParent.GetComponent<RectTransform>());
     }
 
 }

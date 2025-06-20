@@ -12,6 +12,19 @@ public class Comment
 
     public Comment(string postID, string commentID, string content, string writerName, string writerEmail)
     {
+        if (string.IsNullOrWhiteSpace(postID))
+            throw new Exception("postID는 비어 있을 수 없습니다.");
+        if (string.IsNullOrWhiteSpace(commentID))
+            throw new Exception("commentID는 비어 있을 수 없습니다.");
+        if (string.IsNullOrWhiteSpace(content))
+            throw new Exception("content는 비어 있을 수 없습니다.");
+        if (content.Length > 200)
+            throw new Exception("댓글은 200자를 초과할 수 없습니다.");
+        if (string.IsNullOrWhiteSpace(writerName))
+            throw new Exception("writerName은 비어 있을 수 없습니다.");
+        if (string.IsNullOrWhiteSpace(writerEmail))
+            throw new Exception("writerEmail은 비어 있을 수 없습니다.");
+
         PostID = postID;
         CommentID = commentID;
         Content = content;
@@ -21,12 +34,8 @@ public class Comment
     }
 
     public Comment(CommentDTO dto)
+    : this(dto.PostID, dto.CommentID, dto.Content, dto.WriterName, dto.WriterEmail)
     {
-        PostID = dto.PostID;
-        CommentID = dto.CommentID;
-        Content = dto.Content;  
-        WriterName = dto.WriterName;
-        WriterEmail = dto.WriterEmail;
         PostTime = dto.PostTime;
     }
 

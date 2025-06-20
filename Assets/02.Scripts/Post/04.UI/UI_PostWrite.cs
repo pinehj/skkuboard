@@ -26,10 +26,8 @@ public class UI_PostWrite : MonoBehaviour
 
         if (await PostManager.Instance.TryAddPost(new User()
         {
-            Email = "master@master.com",
-            Nickname = "master"
-            //Email = AccountManager.Instance.UserAccount.Email,
-            //Nickname = AccountManager.Instance.UserAccount.Nickname
+            Email = AccountManager.Instance.User.Email,
+            Nickname = AccountManager.Instance.User.Nickname
         }, _inputField.text))
         {
             gameObject.SetActive(false);

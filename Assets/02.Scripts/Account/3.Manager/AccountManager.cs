@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AccountManager : Singleton<AccountManager>
 {
-    private Account _userAccount;
-    public AccountDTO UserAccount => _userAccount.ToDTO();
+    public AccountDTO User { get; private set; }
 
     private AccountRepository _repository;
 
@@ -15,30 +15,55 @@ public class AccountManager : Singleton<AccountManager>
         Init();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            TryDeleteAccount();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LogOut();
+        }
+    }
+
     private void Init()
     {
         _repository = new AccountRepository();
     }
 
-
-    public async Task<bool> TryRegister(string email, string passward, string nickname)
+    
+    public async Task<AccountResultMessage> TryRegister(string email, string passward, string nickname)
     {
         AccountDTO newAccount = new AccountDTO(email, CryptoUtil.Encryption(passward, email), nickname);
-        try
-        {
-            await _repository.Register(newAccount);
-            Debug.LogError("회원가입에 성공하였습니다.");
-            return true;    
-        }
-        catch(System.Exception e)
-        {
-            Debug.LogError($"회원가입에 실패하였습니다.: {e}");
-            return false;
-        }
+        return await _repository.Register(newAccount);
     }
 
-    public bool TryLogin()
+    public async Task<AccountResultMessage> TryLogin(string email, string passward)
     {
-        return false;
+        AccountDTO loginAccount = new AccountDTO(email, CryptoUtil.Encryption(passward, email), "");
+
+        AccountResultMessage result = await _repository.Login(loginAccount);
+        if (result.IsSuccess)
+        {
+            User = new AccountDTO(_repository.User.Email, "PASSWARD", _repository.User.DisplayName);
+            Debug.Log($"{User.Nickname} :: {User.Email}");
+            SceneManager.LoadScene(1);
+        }
+
+        return result;
+    }
+
+    public async Task<AccountResultMessage> TryDeleteAccount()
+    {
+        return await _repository.DeleteAccount();
+    }
+
+    public void LogOut()
+    {
+        User = null;
+        _repository.Logout();
+        SceneManager.LoadScene(0);
     }
 }

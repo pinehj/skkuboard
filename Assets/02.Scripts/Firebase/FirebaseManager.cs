@@ -12,9 +12,11 @@ public class FirebaseManager : Singleton<FirebaseManager>
     private FirebaseFirestore _db;
     public FirebaseFirestore DB => _db;
 
+
     public event Action OnFirebaseLinked;
     protected override void Awake()
     {
+        base.Awake();
         base.Awake();
         Init();
     }

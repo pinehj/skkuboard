@@ -6,6 +6,9 @@ public class Account
     public readonly string Passward;
     public readonly string Nickname;
 
+
+    public Account(AccountDTO dto) => new Account(dto.Email, dto.Passward, dto.Nickname);
+
     public Account(string email, string passward, string nickname)
     {
         EmailSpecification emailSpecification = new EmailSpecification();
@@ -30,6 +33,7 @@ public class Account
         Passward = passward;
         Nickname = nickname;
     }
+
 
     public AccountDTO ToDTO()
     {

@@ -9,3 +9,10 @@ public struct User
     [FirestoreProperty]
     public string Nickname { get; set; }
 }
+
+
+public struct AccountResultMessage
+{
+    public string MessageText;
+    public bool IsSuccess;
+}

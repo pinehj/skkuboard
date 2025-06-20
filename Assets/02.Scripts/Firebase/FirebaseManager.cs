@@ -12,9 +12,14 @@ public class FirebaseManager : Singleton<FirebaseManager>
     private FirebaseFirestore _db;
     public FirebaseFirestore DB => _db;
 
+    private FirebaseAuth _auth;
+    public FirebaseAuth Auth => _auth;
+
+
     public event Action OnFirebaseLinked;
     protected override void Awake()
     {
+        base.Awake();
         base.Awake();
         Init();
     }
@@ -27,6 +32,7 @@ public class FirebaseManager : Singleton<FirebaseManager>
             {
                 _app = FirebaseApp.DefaultInstance;
                 _db = FirebaseFirestore.DefaultInstance;
+                _auth = FirebaseAuth.DefaultInstance;
                 Debug.Log("파이어베이스 연동 완료");
                 OnFirebaseLinked?.Invoke();
             }

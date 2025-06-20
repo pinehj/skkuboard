@@ -52,17 +52,6 @@ public class AccountRepository
         }
     }
 
-    public FirebaseUser CurrentUser()
-    {
-        if (_auth.CurrentUser == null)
-        {
-            Debug.LogError("로그인 상태가 아닙니다.");
-            return null;
-        }
-
-        return _auth.CurrentUser;
-    }
-
     public async Task<AccountResultMessage> Register(AccountDTO accountDTO)
     {
         try
@@ -108,6 +97,7 @@ public class AccountRepository
         if (_user == null)
         {
             Debug.LogError("로그인 상태가 아닙니다.");
+            return;
         }
 
         _auth.SignOut();

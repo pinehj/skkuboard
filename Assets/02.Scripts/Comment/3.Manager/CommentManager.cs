@@ -31,6 +31,7 @@ public class CommentManager : Singleton<CommentManager>
     private CommentRepository _repository;
 
     public Action OnLoadAllComments;
+    public Action OnLoadPostComments;
 
     protected override void Awake()
     {
@@ -77,6 +78,17 @@ public class CommentManager : Singleton<CommentManager>
         {
             _currentPostComments = entry.Comments;
         }
+        OnLoadPostComments?.Invoke();
+    }
+
+    public int GetCommentCountForPost(string postID)
+    {
+        var entry = _postAndComments.Find(p => p.PostID == postID);
+        if (entry.Comments != null)
+        {
+            return entry.Comments.Count;
+        }
+        return 0;
     }
 
     public async Task AddComment(string content)

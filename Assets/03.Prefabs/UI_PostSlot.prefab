@@ -529,7 +529,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 688834402040025014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3301679780716766224}
+        m_TargetAssemblyTypeName: UI_PostSlot, Assembly-CSharp
+        m_MethodName: GoDetail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4604648937429297941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,13 +1309,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ba4c019a2c284478dbc201f80fea03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  postID: 
   _nicknameText: {fileID: 8222186210547899925}
   _postTimeText: {fileID: 6959835769256502421}
   _contentText: {fileID: 1604061784652092061}
   _likesCountText: {fileID: 1919250303293645853}
+  _commentsCountText: {fileID: 2569646648536540507}
+  _modifyButton: {fileID: 0}
+  _deleteButton: {fileID: 0}
   _likeButton: {fileID: 3471636661782888822}
-  _commentWriteButton: {fileID: 7592241233705723111}
+  _commentButton: {fileID: 7592241233705723111}
+  _scrollRect: {fileID: 0}
+  UI_Board: {fileID: 0}
 --- !u!1 &7354191277708906445
 GameObject:
   m_ObjectHideFlags: 0

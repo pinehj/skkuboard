@@ -10,6 +10,7 @@ public class UI_PostDetail : MonoBehaviour
         _postSlot.Refresh(postDTO);
         _postSlot.UI_Board = _ui_Board;
         CommentManager.Instance.GetComments(postDTO.ID);
+        Debug.Log($"CommentManager에게 postid {postDTO.ID} 전달");
     }
 
     public void OnBackButtonClick()

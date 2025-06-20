@@ -26,7 +26,6 @@ public class UI_Board : MonoBehaviour
 
     public async void Refresh()
     {
-        gameObject.SetActive(true);
         _slots = _slotContainer.GetComponentsInChildren<UI_PostSlot>().ToList();
 
         if (await PostManager.Instance.TryLoadPosts())
@@ -70,6 +69,5 @@ public class UI_Board : MonoBehaviour
     public void WritePost()
     {
         _postWritePanel.gameObject.SetActive(true);
-        gameObject.SetActive(false);
     }
 }

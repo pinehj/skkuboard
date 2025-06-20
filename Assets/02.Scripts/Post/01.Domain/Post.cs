@@ -108,4 +108,11 @@ public class Post
     {
         Likes.RemoveAll(u => u.Email == user.Email);
     }
+
+    public void ToggleLike(User user)
+    {
+        if (Likes.Exists(u => u.Email == user.Email))
+            Likes.RemoveAll(u => u.Email == user.Email); // 좋아요 취소
+        else Likes.Add(user); // 좋아요 추가
+    }
 }

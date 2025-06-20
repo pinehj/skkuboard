@@ -1838,6 +1838,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1971260709576910631, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
     - target: {fileID: 4123727957574567363, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_LineType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123727957574567363, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_GlobalPointSize
       value: 35
       objectReference: {fileID: 0}
@@ -1945,6 +1949,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 1971260709576910631, guid: 4d6ba02903469fa489225109a63c37f3, type: 2}
+    - target: {fileID: 5122093984894006156, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6216458581039004627, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_Name
       value: CommentPostUI
@@ -1959,23 +1967,27 @@ PrefabInstance:
       objectReference: {fileID: 7535388438504025223}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1985,7 +1997,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3198369528543317796, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

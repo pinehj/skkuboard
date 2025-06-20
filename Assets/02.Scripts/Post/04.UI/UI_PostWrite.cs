@@ -16,8 +16,8 @@ public class UI_PostWrite : MonoBehaviour
         Debug.Log(PostManager.Instance.name);
         if(await PostManager.Instance.TryAddPost(new User()
         {
-            Email = "s@s.com",
-            Nickname = "글올닉"
+            Email = AccountManager.Instance.User.Email,
+            Nickname = AccountManager.Instance.User.Nickname
         }, _inputField.text))
         {
             gameObject.SetActive(false);

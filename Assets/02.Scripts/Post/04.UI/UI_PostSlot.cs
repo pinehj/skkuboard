@@ -10,6 +10,7 @@ public class UI_PostSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _postTimeText;
     [SerializeField] private TextMeshProUGUI _contentText;
     [SerializeField] private TextMeshProUGUI _likesCountText;
+    [SerializeField] private TextMeshProUGUI _commentsCountText;
 
     [SerializeField] private Button _modifyButton;
     [SerializeField] private Button _deleteButton;

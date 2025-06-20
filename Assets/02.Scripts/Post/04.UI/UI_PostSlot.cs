@@ -15,6 +15,7 @@ public class UI_PostSlot : MonoBehaviour
     [SerializeField] private Button _modifyButton;
     [SerializeField] private Button _deleteButton;
     [SerializeField] private Button _likeButton;
+    [SerializeField] private Button _commentButton;
 
     [SerializeField] public UI_Board UI_Board;
     public void Refresh(PostDTO postDTO)

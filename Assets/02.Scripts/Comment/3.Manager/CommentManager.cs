@@ -33,10 +33,10 @@ public class CommentManager : Singleton<CommentManager>
     public Action OnLoadAllComments;
     public Action OnLoadPostComments;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        FirebaseManager.Instance.OnFirebaseLinked += Init;
+        base.Awake();
+        Init();
     }
 
     private void Init()

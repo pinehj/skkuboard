@@ -15,6 +15,19 @@ public class AccountManager : Singleton<AccountManager>
         Init();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            TryDeleteAccount();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LogOut();
+        }
+    }
+
     private void Init()
     {
         _repository = new AccountRepository();

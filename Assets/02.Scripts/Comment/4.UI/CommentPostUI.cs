@@ -36,6 +36,7 @@ public class CommentPostUI : MonoBehaviour
 
         // 즉시 리스트 새로고침
         _commentsUI.Refresh();
+        StartCoroutine(ScrollToBottomNextFrame());
     }
 
     private void OnInputValueChanged(string input)
@@ -43,5 +44,11 @@ public class CommentPostUI : MonoBehaviour
         bool isEmpty = string.IsNullOrWhiteSpace(input);
         _postButtonImage.color = isEmpty ? inactiveColor : activeColor;
         _postButton.interactable = !isEmpty;
+    }
+
+    private System.Collections.IEnumerator ScrollToBottomNextFrame()
+    {
+        yield return null; // 다음 프레임까지 대기
+        _commentsUI.ScrollDown();
     }
 }

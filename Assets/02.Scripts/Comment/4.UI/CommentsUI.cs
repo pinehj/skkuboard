@@ -7,6 +7,7 @@ public class CommentsUI : MonoBehaviour
     [SerializeField] private CommentPostUI _commentPost;
     [SerializeField] private CommentSlotUI _commentSlotUIPrefab;
     [SerializeField] private Transform _slotParent;
+    [SerializeField] private ScrollRect _commentScrollRect;
     private List<CommentSlotUI> _commentSlots;
 
     private List<CommentDTO> _commentDTOs;
@@ -70,4 +71,8 @@ public class CommentsUI : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(_slotParent.GetComponent<RectTransform>());
     }
 
+    public void ScrollDown()
+    {
+        _commentScrollRect.verticalNormalizedPosition = 0f;
+    }
 }

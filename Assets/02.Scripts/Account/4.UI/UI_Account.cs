@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class UI_Account : MonoBehaviour
     [Header("[Panels]")]
     public GameObject LoginPanel;
     public GameObject RegisterPanel;
+    public GameObject AccountDeletePopup;
 
 
     [Header("[Login]")]
@@ -43,9 +45,8 @@ public class UI_Account : MonoBehaviour
         _passwardSpecification = new PasswardSpecification();
     }
 
-    public void OnRegister() => Register();
-    
-    public async Task Register()
+
+    public async void Register()
     {
         string email = RegisterEmailInputField.text;
         if (!_emailSpecification.IsSatisfiedBy(email))
@@ -79,19 +80,37 @@ public class UI_Account : MonoBehaviour
             return;
         }
 
-        if (await AccountManager.Instance.TryRegister(email, nickname, passward))
+        AccountResultMessage result = await AccountManager.Instance.TryRegister(email, passward, nickname);
+        RegisterMessageText.text = result.MessageText;
+
+        if (result.IsSuccess)
         {
-            RegisterMessageText.text = "회원가입에 실패하였습니다.";
+            LoginEmailInputField.text = RegisterEmailInputField.text;
+            LoginPasswardInputField.text = "";
+            OnBackButton();
+        }
+    }
+
+    public async void Login()
+    {
+        string email = LoginEmailInputField.text;
+        if (!_emailSpecification.IsSatisfiedBy(email))
+        {
+            LoginMessageText.text = _emailSpecification.ErrorMassage;
+            // LoginMessageText.rectTransform.DOShakeScale(0.2f);
             return;
         }
 
-        RegisterMessageText.text = "회원가입이 완료되었습니다.";
+        string passward = LoginPasswardInputField.text;
+        if (!_passwardSpecification.IsSatisfiedBy(passward))
+        {
+            LoginMessageText.text = _passwardSpecification.ErrorMassage;
+            // LoginMessageText.rectTransform.DOShakeScale(0.2f);
+            return;
+        }
 
-    }
-
-    public void Login()
-    {
-
+        AccountResultMessage result = await AccountManager.Instance.TryLogin(email, passward);
+        LoginMessageText.text = result.MessageText;
     }
 
     public void OnRegisterButton()

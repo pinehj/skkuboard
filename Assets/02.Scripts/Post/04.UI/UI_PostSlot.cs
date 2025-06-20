@@ -22,6 +22,22 @@ public class UI_PostSlot : MonoBehaviour
         _postTimeText.text = postDTO.PostTime.ToString();
         _contentText.text = postDTO.Content;
         _likesCountText.text = $"좋아요 {postDTO.Likes.Count}";
+        if (postDTO.Likes.Contains(new User()
+        {
+            Nickname = "좋아요한사람",
+            Email = "좋아요이메일"
+        }))
+        {
+            Color color = _likeButton.image.color;
+            color.r = 1;
+            _likeButton.image.color = color;
+        }
+        else
+        {
+            Color color = _likeButton.image.color;
+            color.r = 0;
+            _likeButton.image.color = color;
+        }
     }
 
     // Todo: 취소 구현 / Post에 isLiked?
@@ -35,11 +51,11 @@ public class UI_PostSlot : MonoBehaviour
 
         if(updatedPostDTO != null)
         {
-            Color color = _likeButton.image.color;
-            color.r = 1;
-            _likeButton.image.color = color;
-
             Refresh(updatedPostDTO);
+        }
+        else
+        {
+            Debug.Log("좋아요 실패");
         }
     }
 }

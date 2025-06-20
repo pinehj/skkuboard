@@ -5,14 +5,29 @@ public class UI_PostDetail : MonoBehaviour
     [SerializeField] private UI_PostSlot _postSlot;
     [SerializeField] private UI_Board _ui_Board;
     [SerializeField] private PostDTO _postDTO;
+
+    private void Start()
+    {
+        _ui_Board.PostModifyPanel.OnUploaded += Refresh;
+    }
+
+    public async void Refresh()
+    {
+        PostDTO refreshedDto = await PostManager.Instance.TryLoadPost(_postDTO.ID);
+        if(refreshedDto != null)
+        {
+            _postDTO = refreshedDto;
+            Refresh(_postDTO);
+        }
+    }
     public void Refresh(PostDTO postDTO)
     {
-        gameObject.SetActive(true);
         _postDTO = postDTO;
         _postSlot.Refresh(postDTO);
         _postSlot.UI_Board = _ui_Board;
         CommentManager.Instance.GetComments(postDTO.ID);
         Debug.Log($"CommentManager에게 postid {postDTO.ID} 전달");
+        gameObject.SetActive(true);
     }
 
     public void OnBackButtonClick()

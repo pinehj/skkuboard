@@ -20,7 +20,7 @@ public class CommentPostUI : MonoBehaviour
         _inputField.onValueChanged.AddListener(OnInputValueChanged);
     }
 
-    private void OnPostButtonClicked()
+    private async void OnPostButtonClicked()
     {
         string content = _inputField.text.Trim();
 
@@ -30,7 +30,7 @@ public class CommentPostUI : MonoBehaviour
             return;
         }
 
-        CommentManager.Instance.AddComment(content);
+        await CommentManager.Instance.AddComment(content);
 
         _inputField.text = "";
 

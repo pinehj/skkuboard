@@ -79,7 +79,7 @@ public class CommentManager : Singleton<CommentManager>
         }
     }
 
-    public async void AddComment(string content)
+    public async Task AddComment(string content)
     {
         string commentID = Guid.NewGuid().ToString();
         /*string writerName = AccountManager.Instance.UserAccount.Nickname;
@@ -105,7 +105,7 @@ public class CommentManager : Singleton<CommentManager>
         _currentPostComments.Add(newComment);
     }
 
-    public async void DeleteComment(string commentID)
+    public async Task DeleteComment(string commentID)
     {
         await _repository.DeleteComment(_currentPostID, commentID);
 

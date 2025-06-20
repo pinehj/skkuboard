@@ -32,8 +32,8 @@ public class CommentSlotUI : MonoBehaviour
         }
     }
 
-    public void OnDeleteButtonClicked()
+    public async void OnDeleteButtonClicked()
     {
-        CommentManager.Instance.DeleteComment(_currentDTO.CommentID);
+        await CommentManager.Instance.DeleteComment(_currentDTO.CommentID);
     }
 }

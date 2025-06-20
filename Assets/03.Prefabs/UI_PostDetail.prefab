@@ -768,8 +768,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 449.99997, y: -84.42}
-  m_SizeDelta: {x: 859.99994, y: 0}
+  m_AnchoredPosition: {x: 202.5, y: -170.305}
+  m_SizeDelta: {x: 365, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &263582629643437427
 CanvasRenderer:
@@ -2281,7 +2281,6 @@ MonoBehaviour:
   _modifyButton: {fileID: 0}
   _deleteButton: {fileID: 0}
   _likeButton: {fileID: 0}
-  _commentWriteButton: {fileID: 0}
   UI_Board: {fileID: 0}
 --- !u!114 &2144117622009478707
 MonoBehaviour:
@@ -2584,8 +2583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 449.99997, y: -308.9}
-  m_SizeDelta: {x: 899.99994, y: 0}
+  m_AnchoredPosition: {x: 202.5, y: -394.78497}
+  m_SizeDelta: {x: 405, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7165024904413455627
 CanvasRenderer:

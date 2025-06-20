@@ -52,17 +52,6 @@ public class AccountRepository
         }
     }
 
-    public FirebaseUser CurrentUser()
-    {
-        if (_auth.CurrentUser == null)
-        {
-            Debug.LogError("로그인 상태가 아닙니다.");
-            return null;
-        }
-
-        return _auth.CurrentUser;
-    }
-
     public async Task<AccountResultMessage> Register(AccountDTO accountDTO)
     {
         try
@@ -108,6 +97,7 @@ public class AccountRepository
         if (_user == null)
         {
             Debug.LogError("로그인 상태가 아닙니다.");
+            return;
         }
 
         _auth.SignOut();
@@ -117,7 +107,7 @@ public class AccountRepository
 
     public async Task<AccountResultMessage> DeleteAccount()
     {
-        if (_user != null)
+        if (_user == null)
         {
             return new AccountResultMessage() { MessageText = "로그인 상태가 아닙니다.", IsSuccess = false };
         }
@@ -133,5 +123,22 @@ public class AccountRepository
             Debug.LogError(e);
             return new AccountResultMessage() { MessageText = e.Message, IsSuccess = false };
         }
+    }
+
+    public async Task<AccountResultMessage> ChangePassward(AccountDTO accountDTO)
+    {
+        try
+        {
+            
+            await _user.UpdatePasswordAsync(accountDTO.Passward);
+            return new AccountResultMessage() { MessageText = "비빌번호가 변경되었습니다.", IsSuccess = true };
+        }
+        catch (FirebaseException e)
+        {
+
+            Debug.LogError(e);
+            return new AccountResultMessage() { MessageText = e.Message, IsSuccess = false };
+        }
+
     }
 }

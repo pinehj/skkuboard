@@ -60,6 +60,12 @@ public class AccountManager : Singleton<AccountManager>
         return await _repository.DeleteAccount();
     }
 
+    public async Task<AccountResultMessage> TryChangePassward(string email, string passward)
+    {
+        AccountDTO newPasswardDTO = new AccountDTO(email, CryptoUtil.Encryption(passward, User.Email), "");
+        return await _repository.ChangePassward(newPasswardDTO);
+    }
+
     public void LogOut()
     {
         User = null;

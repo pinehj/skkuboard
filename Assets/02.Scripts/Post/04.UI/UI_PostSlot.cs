@@ -77,7 +77,6 @@ public class UI_PostSlot : MonoBehaviour
 
     public void OnModifyButtonClick()
     {
-        UI_Board.gameObject.SetActive(false);
         UI_Board.PostModifyPanel.StartWrite(_postDTO);
     }
 
@@ -91,7 +90,6 @@ public class UI_PostSlot : MonoBehaviour
 
     public void GoDetail()
     {
-        UI_Board.gameObject.SetActive(false);
-        UI_Board.PostDetailPanel.Init(_postDTO);
+        UI_Board.PostDetailPanel.Refresh(_postDTO);
     }
 }

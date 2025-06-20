@@ -36,4 +36,9 @@ public class UI_PostModify : MonoBehaviour
             Debug.Log("수정 실패");
         }
     }
+
+    public void OnBackButtonClick()
+    {
+        gameObject.SetActive(false);
+    }
 }

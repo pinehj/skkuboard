@@ -38,4 +38,10 @@ public class UI_PostWrite : MonoBehaviour
             Debug.Log("업로드 실패");
         }
     }
+
+
+    public void OnBackButtonClick()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -5,23 +5,39 @@ using UnityEngine.UI;
 
 public class UI_PostWrite : MonoBehaviour
 {
-    [SerializeField] private Button _postButton;
-    [SerializeField] private Button _backButton;
+    [SerializeField] private TMP_InputField _inputField;
+    public event Action OnUploaded;
 
-    [SerializeField] private TextMeshProUGUI _inputField;
-
-    public event Action OnPosted;
-    public async void OnPostButtonClicked()
+    private void OnEnable()
+    {
+         _inputField.text = string.Empty;
+    }
+    public async void OnUploadButtonClicked()
     {
         Debug.Log(PostManager.Instance.name);
-        if(await PostManager.Instance.TryAddPost(new User()
+
+        // 글 내용 검증
+        var contentSpecification = new ContentSpecification();
+        if (!contentSpecification.IsSatisfiedBy(_inputField.text))
         {
-            Email = "s@s.com",
-            Nickname = "글올닉"
+            Debug.Log(contentSpecification.ErrorMassage);
+            return;
+        }
+
+        if (await PostManager.Instance.TryAddPost(new User()
+        {
+            Email = "master@master.com",
+            Nickname = "master"
+            //Email = AccountManager.Instance.UserAccount.Email,
+            //Nickname = AccountManager.Instance.UserAccount.Nickname
         }, _inputField.text))
         {
             gameObject.SetActive(false);
-            OnPosted?.Invoke();
+            OnUploaded?.Invoke();
+        }
+        else
+        {
+            Debug.Log("업로드 실패");
         }
     }
 }

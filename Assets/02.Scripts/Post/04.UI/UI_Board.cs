@@ -13,11 +13,13 @@ public class UI_Board : MonoBehaviour
     [SerializeField] private Button _backButton;
 
     [SerializeField] private UI_PostWrite _postWritePanel;
+    [SerializeField] public UI_PostModify PostModifyPanel;
 
     private void Start()
     {
         Refresh();
-        _postWritePanel.OnPosted += Refresh;
+        _postWritePanel.OnUploaded += Refresh;
+        PostModifyPanel.OnUploaded += Refresh;
     }
 
     public async void Refresh()
@@ -29,17 +31,22 @@ public class UI_Board : MonoBehaviour
         {
             int slotIndex = 0;
             List<PostDTO> posts = PostManager.Instance.Posts;
+            Debug.Log($"슬롯 카운트{_slots.Count}");
             for(int i = 0; i< posts.Count; i++)
             {
+                Debug.Log(i);
                 if (_slots.Count > i)
                 {
                     _slots[slotIndex].Refresh(posts[i]);
                     ++slotIndex;
+                    Debug.Log("갱신");
                 }
                 else
                 {
                     UI_PostSlot newSlot = Instantiate(_slotPrefab, _slotContainer);
                     newSlot.Refresh(posts[i]);
+                    newSlot.UI_Board = this;
+                    Debug.Log("생성");
                 }
             }
 
@@ -48,7 +55,7 @@ public class UI_Board : MonoBehaviour
                 UI_PostSlot deleteSlot = _slots[i];
                 _slots.RemoveAt(i);
                 Destroy(deleteSlot.gameObject);
-
+                Debug.Log("삭제");
             }
             Debug.Log("새로고침 성공");
         }

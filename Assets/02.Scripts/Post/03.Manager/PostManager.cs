@@ -86,6 +86,11 @@ public class PostManager : Singleton<PostManager>
 
     public async Task<bool> TryAddPost(User writer, string content)
     {
+        if (!string.IsNullOrEmpty(content))
+        {
+            Debug.Log($"내용 비어있나:{content}dd");
+        }
+        
         Post newPost = new Post(System.Guid.NewGuid().ToString(), writer, content, new List<User>());
 
         try

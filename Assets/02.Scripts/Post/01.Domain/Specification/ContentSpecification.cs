@@ -7,7 +7,7 @@ public class ContentSpecification : ISpecification<string>
 
     public bool IsSatisfiedBy(string input)
     {
-        if (string.IsNullOrEmpty(input))
+        if (string.IsNullOrWhiteSpace(input))
         {
             ErrorMassage = "내용이 없는 글은 작성할 수 없습니다.";
             return false;

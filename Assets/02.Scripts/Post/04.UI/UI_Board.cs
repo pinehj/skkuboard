@@ -22,6 +22,7 @@ public class UI_Board : MonoBehaviour
         Refresh();
         _postWritePanel.OnUploaded += Refresh;
         PostModifyPanel.OnUploaded += Refresh;
+        CommentManager.Instance.OnLoadAllComments += Refresh;
     }
 
     public async void Refresh()

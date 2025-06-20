@@ -25,14 +25,14 @@ public class Post
         //닉네임명세가 명세 인터페이스 구현을 안하고 있음. 함수명도 다름
         if (!nicknameSpecification.IsSatifiedBy(writer.Nickname))
         {
-            throw new Exception(contentSpecification.ErrorMassage);
+            throw new Exception(nicknameSpecification.ErrorMassage);
         }
 
         //email 검증
         var emailSpecification = new EmailSpecification();
         if (!emailSpecification.IsSatisfiedBy(writer.Email))
         {
-            throw new Exception(contentSpecification.ErrorMassage);
+            throw new Exception(emailSpecification.ErrorMassage);
         }
 
         ID = id;
@@ -41,6 +41,42 @@ public class Post
         Content = content;
 
         Likes = likes;
+    }
+
+    public Post(PostDTO postDTO)
+    {
+        // 글 내용 검증
+        var contentSpecification = new ContentSpecification();
+        if (!contentSpecification.IsSatisfiedBy(postDTO.Content))
+        {
+            throw new Exception(contentSpecification.ErrorMassage);
+        }
+
+        // 닉네임 검증
+        var nicknameSpecification = new NicknameSpecification();
+        //닉네임명세가 명세 인터페이스 구현을 안하고 있음. 함수명도 다름
+        if (!nicknameSpecification.IsSatifiedBy(postDTO.Writer.Nickname))
+        {
+            throw new Exception(nicknameSpecification.ErrorMassage);
+        }
+
+        //email 검증
+        var emailSpecification = new EmailSpecification();
+        if (!emailSpecification.IsSatisfiedBy(postDTO.Writer.Email))
+        {
+            throw new Exception(emailSpecification.ErrorMassage);
+        }
+
+        if(postDTO.PostTime == new DateTime())
+        {
+            throw new Exception("작성일은 비어있을 수 없습니다.");
+        }
+
+        ID = postDTO.ID;
+        Writer = postDTO.Writer;
+        PostTime = postDTO.PostTime;
+        Content = postDTO.Content;
+        Likes = postDTO.Likes;
     }
 
     public PostDTO ToDTO()

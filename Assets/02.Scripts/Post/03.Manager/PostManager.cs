@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor.Build.Content;
 using UnityEngine;
@@ -58,7 +59,7 @@ public class PostManager : Singleton<PostManager>
     {
         try
         {
-            _posts = (await _repository.GetPosts()).ConvertAll(post => new Post(post.ID, post.Writer, post.Content, post.Likes));
+            _posts = (await _repository.GetPosts()).ConvertAll(post => new Post(post));
             return true;
         }
         catch(Exception e)
@@ -72,7 +73,7 @@ public class PostManager : Singleton<PostManager>
     {
         try
         {
-            _posts = (await _repository.GetPosts()).ConvertAll(post => new Post(post.ID, post.Writer, post.Content, post.Likes));
+            _posts = (await _repository.GetPosts()).ConvertAll(post => new Post(post));
 
             return await _repository.GetPost(postID);
         }

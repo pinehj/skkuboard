@@ -11,26 +11,13 @@ public class CommentsUI : MonoBehaviour
 
     private List<CommentDTO> _commentDTOs;
 
-    // 테스트용
-    private bool Turn = true;
-
     private void Start()
     {
         _commentSlots = new List<CommentSlotUI>();
 
-        // Firebase 초기화 이후에만 접근하도록 보장
-        FirebaseManager.Instance.OnFirebaseLinked += () =>
-        {
-            CommentManager.Instance.OnLoadAllComments += () =>
-            {
-                CommentManager.Instance.GetComments("PostID");
-                _commentDTOs = CommentManager.Instance.CurrentPostComments;
-                Refresh();
-            };
 
-            // 이 시점에 직접 호출해줘야 이벤트가 발동됨
-            _ = CommentManager.Instance.LoadAllComments();
-        };
+        CommentManager.Instance.OnLoadPostComments += Refresh;
+        Debug.Log("refresh is added to loadpostcomments");
     }
 
     private void Update()
@@ -40,22 +27,6 @@ public class CommentsUI : MonoBehaviour
         {
             Refresh();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetOnorOff(Turn);
-            Turn = !Turn;
-        }
-    }
-
-    public void SetOnorOff(bool turn)
-    {
-        _commentPost.gameObject.SetActive(turn);
-        _slotParent.gameObject.SetActive(turn);
-    }
-
-    public void PostClickLoad()
-    {
-        // 게시글을 클릭했을 경우 그 게시글의 id에 맞게 댓글 받아옴
     }
 
     private async void HandleDeleteSlotRequest(CommentSlotUI slot)
@@ -70,8 +41,6 @@ public class CommentsUI : MonoBehaviour
 
     public void Refresh()
     {
-        // 테스트용, 나중에는 id 제대로 받기
-        CommentManager.Instance.GetComments("PostID");
         _commentDTOs = CommentManager.Instance.CurrentPostComments;
         Debug.Log($"[CommentsUI] Refresh 시작, 댓글 수: {_commentDTOs?.Count ?? -1}");
 

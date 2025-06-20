@@ -23,8 +23,10 @@ public class CommentRepository
             return;
         }
 
-        DocumentReference docRef = _db.Collection(COLLECTION_NAME).Document(dto.PostID).Collection(SUBCOLLECTION_NAME).Document(dto.CommentID);
+        DocumentReference postDocRef = _db.Collection(COLLECTION_NAME).Document(dto.PostID);
+        await postDocRef.SetAsync(new Dictionary<string, object> {{ "PostID", dto.PostID }}, SetOptions.MergeAll); // 이미 있으면 병합 (덮어쓰기 방지)
 
+        DocumentReference docRef = _db.Collection(COLLECTION_NAME).Document(dto.PostID).Collection(SUBCOLLECTION_NAME).Document(dto.CommentID);
         await docRef.SetAsync(dto);
         Debug.Log($"댓글 추가 완료: {dto.CommentID} / {dto.Content}");
     }

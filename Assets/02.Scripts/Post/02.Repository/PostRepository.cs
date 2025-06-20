@@ -17,7 +17,7 @@ public class PostRepository
 
     public async Task<List<PostDTO>> GetPosts()
     {
-        Query query = FirebaseManager.Instance.DB.Collection("Posts");
+        Query query = FirebaseManager.Instance.DB.Collection("Posts").OrderByDescending("PostTime");
         QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
 
         List<PostDTO> posts = new List< PostDTO > ();

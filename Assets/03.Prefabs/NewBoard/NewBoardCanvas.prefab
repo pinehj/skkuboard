@@ -2292,10 +2292,11 @@ MonoBehaviour:
   _postTimeText: {fileID: 8069449155174376845}
   _contentText: {fileID: 5133828882757182490}
   _likesCountText: {fileID: 8117860882706114911}
+  _commentsCountText: {fileID: 5090137424699310369}
   _modifyButton: {fileID: 3909092853749887622}
   _deleteButton: {fileID: 4502275414991848481}
   _likeButton: {fileID: 4132871551607497545}
-  UI_Board: {fileID: 0}
+  UI_Board: {fileID: 5870180045715261082}
 --- !u!114 &8271507900325216538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2430,7 +2431,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2309346271677727456}
   m_HandleRect: {fileID: 2007963296662432568}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3468,7 +3469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00075901474}
+  m_AnchoredPosition: {x: 0, y: -0.00007319916}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4642307919129817147

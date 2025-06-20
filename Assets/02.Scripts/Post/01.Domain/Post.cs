@@ -97,6 +97,22 @@ public class Post
 
     public void AddLike(User user)
     {
-        Likes.Add(user);
+        // 같은 유저 있을 경우 추가 x
+        if (!Likes.Exists(u => u.Email == user.Email))
+        {
+            Likes.Add(user);
+        }
+    }
+
+    public void CancelLike(User user)
+    {
+        Likes.RemoveAll(u => u.Email == user.Email);
+    }
+
+    public void ToggleLike(User user)
+    {
+        if (Likes.Exists(u => u.Email == user.Email))
+            Likes.RemoveAll(u => u.Email == user.Email); // 좋아요 취소
+        else Likes.Add(user); // 좋아요 추가
     }
 }

@@ -135,6 +135,25 @@ public class PostManager : Singleton<PostManager>
         }
         return null;
     }
+    //public async Task<PostDTO> TryLike(string postID, User liker)
+    //{
+    //    Post post = FindPostByID(postID);
+    //    if (post == null)
+    //    {
+    //        return null;
+    //    }
+    //    post.AddLike(liker);
+    //    try
+    //    {
+    //        await _repository.UpdatePost(post.ToDTO());
+    //        return post.ToDTO();
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        return null;
+    //    }
+    //}
+
     public async Task<PostDTO> TryLike(string postID, User liker)
     {
         Post post = FindPostByID(postID);
@@ -142,7 +161,20 @@ public class PostManager : Singleton<PostManager>
         {
             return null;
         }
-        post.AddLike(liker);
+
+        // 토글 방식 적용
+        bool alreadyLiked = post.Likes.Exists(u => u.Email == liker.Email);
+        if (alreadyLiked)
+        {
+            post.CancelLike(liker);
+            Debug.Log($"[TryLike] 좋아요: {liker}");
+        }
+        else
+        {
+            post.AddLike(liker);
+            Debug.Log($"[TryLike] 좋아요 취소: {liker}");
+        }
+
         try
         {
             await _repository.UpdatePost(post.ToDTO());
@@ -150,6 +182,7 @@ public class PostManager : Singleton<PostManager>
         }
         catch (Exception e)
         {
+            Debug.Log($"[TryLike] 업데이트 실패: {e.Message}");
             return null;
         }
     }

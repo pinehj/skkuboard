@@ -32,18 +32,14 @@ public class UI_PostSlot : MonoBehaviour
             Nickname = AccountManager.Instance.User.Nickname
         }))
         {
-            Color color = _likeButton.image.color;
-            color.r = 1;
-            _likeButton.image.color = color;
+            _likeButton.image.color = Color.red;
         }
         else
         {
-            Color color = _likeButton.image.color;
-            color.r = 0;
-            _likeButton.image.color = color;
+            _likeButton.image.color = Color.white;
         }
 
-        if(postDTO.Writer.Equals(new User()
+        if (postDTO.Writer.Equals(new User()
         {
             Email = AccountManager.Instance.User.Email,
             Nickname = AccountManager.Instance.User.Nickname

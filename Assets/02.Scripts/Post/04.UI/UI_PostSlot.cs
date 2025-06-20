@@ -89,4 +89,9 @@ public class UI_PostSlot : MonoBehaviour
             UI_Board.Refresh();
         }
     }
+
+    public void GoDetail()
+    {
+        UI_Board.PostDetailPanel.Init(_postDTO);
+    }
 }

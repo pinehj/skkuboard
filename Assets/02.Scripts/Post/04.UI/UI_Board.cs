@@ -13,8 +13,10 @@ public class UI_Board : MonoBehaviour
     [SerializeField] private Button _backButton;
 
     [SerializeField] private UI_PostWrite _postWritePanel;
-    [SerializeField] public UI_PostModify PostModifyPanel;
 
+    // 수정 필요
+    [SerializeField] public UI_PostModify PostModifyPanel;
+    [SerializeField] public UI_PostDetail PostDetailPanel;
     private void Start()
     {
         Refresh();

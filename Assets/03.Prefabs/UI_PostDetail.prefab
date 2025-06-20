@@ -120,13 +120,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ba4c019a2c284478dbc201f80fea03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  postID: 
   _nicknameText: {fileID: 8677293806036795456}
   _postTimeText: {fileID: 3170634044387946829}
   _contentText: {fileID: 4244766352319820974}
   _likesCountText: {fileID: 5778451646981125905}
+  _modifyButton: {fileID: 0}
+  _deleteButton: {fileID: 0}
   _likeButton: {fileID: 0}
   _commentWriteButton: {fileID: 0}
+  UI_Board: {fileID: 0}
 --- !u!114 &7470128702712764399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,6 +1692,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8565287256695700002}
     m_Modifications:
+    - target: {fileID: 2104312800629786325, guid: 76dda1d8c4f163843b6020a1f19db43e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104312800629786325, guid: 76dda1d8c4f163843b6020a1f19db43e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104312800629786325, guid: 76dda1d8c4f163843b6020a1f19db43e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104312800629786325, guid: 76dda1d8c4f163843b6020a1f19db43e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4920160556328399588, guid: 76dda1d8c4f163843b6020a1f19db43e, type: 3}
       propertyPath: m_Name
       value: TopBarUI

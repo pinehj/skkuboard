@@ -129,11 +129,7 @@ public class AccountRepository
     {
         try
         {
-            if (_user == null)
-            {
-                return new AccountResultMessage() { MessageText = "로그인 중이 아닙니다.", IsSuccess = false };
-            }
-
+            
             await _user.UpdatePasswordAsync(accountDTO.Passward);
             return new AccountResultMessage() { MessageText = "비빌번호가 변경되었습니다.", IsSuccess = true };
         }

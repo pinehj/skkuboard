@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_PostDetail
       objectReference: {fileID: 0}
+    - target: {fileID: 3631559943559985917, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4515591980594044416, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -374,6 +378,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7350931816400161354, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560076324889942929, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8300691059577743160, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}

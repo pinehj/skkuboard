@@ -24,8 +24,8 @@ public class CommentSlotUI : MonoBehaviour
         _content.text = dto.Content;
 
         // 현재 계정과 같으면 삭제 버튼 활성화
-        // if(AccountManager.Instance.UserAccount.Email == dto.WriterEmail)
-        if("test@emai.com" == dto.WriterEmail)
+        if(AccountManager.Instance.User.Email == dto.WriterEmail)
+        //if("test@emai.com" == dto.WriterEmail)
         {
             _deleteButton.gameObject.SetActive(true);
         }

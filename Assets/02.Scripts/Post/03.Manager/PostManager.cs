@@ -159,21 +159,17 @@ public class PostManager : Singleton<PostManager>
         Post post = FindPostByID(postID);
         if (post == null)
         {
+            Debug.LogWarning($"[TryLike] 글이 없음: {postID}");
             return null;
         }
 
-        // 토글 방식 적용
-        bool alreadyLiked = post.Likes.Exists(u => u.Email == liker.Email);
-        if (alreadyLiked)
-        {
-            post.CancelLike(liker);
-            Debug.Log($"[TryLike] 좋아요: {liker}");
-        }
-        else
-        {
-            post.AddLike(liker);
-            Debug.Log($"[TryLike] 좋아요 취소: {liker}");
-        }
+        // Toggle 처리
+        bool wasLiked = post.Likes.Exists(u => u.Email == liker.Email);
+        post.ToggleLike(liker);
+
+        Debug.Log(wasLiked
+            ? $"[TryLike] 좋아요 취소됨: {liker.Email}"
+            : $"[TryLike] 좋아요 추가됨: {liker.Email}");
 
         try
         {
@@ -182,10 +178,11 @@ public class PostManager : Singleton<PostManager>
         }
         catch (Exception e)
         {
-            Debug.Log($"[TryLike] 업데이트 실패: {e.Message}");
+            Debug.LogError($"[TryLike] Firestore 업데이트 실패: {e.Message}");
             return null;
         }
     }
+
     public async Task<bool> TryDeletePost(string id)
     {
         try

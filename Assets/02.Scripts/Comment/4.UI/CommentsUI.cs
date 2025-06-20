@@ -18,19 +18,6 @@ public class CommentsUI : MonoBehaviour
     {
         _commentSlots = new List<CommentSlotUI>();
 
-        // Firebase 초기화 이후에만 접근하도록 보장
-        FirebaseManager.Instance.OnFirebaseLinked += () =>
-        {
-            CommentManager.Instance.OnLoadAllComments += () =>
-            {
-                CommentManager.Instance.GetComments("PostID");
-                _commentDTOs = CommentManager.Instance.CurrentPostComments;
-                Refresh();
-            };
-
-            // 이 시점에 직접 호출해줘야 이벤트가 발동됨
-            _ = CommentManager.Instance.LoadAllComments();
-        };
 
         CommentManager.Instance.OnLoadPostComments += Refresh;
     }
@@ -73,7 +60,6 @@ public class CommentsUI : MonoBehaviour
     public void Refresh()
     {
         // 테스트용, 나중에는 id 제대로 받기
-        CommentManager.Instance.GetComments("PostID");
         _commentDTOs = CommentManager.Instance.CurrentPostComments;
         Debug.Log($"[CommentsUI] Refresh 시작, 댓글 수: {_commentDTOs?.Count ?? -1}");
 

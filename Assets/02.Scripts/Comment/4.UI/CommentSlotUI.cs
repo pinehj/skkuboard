@@ -35,5 +35,6 @@ public class CommentSlotUI : MonoBehaviour
     public async void OnDeleteButtonClicked()
     {
         await CommentManager.Instance.DeleteComment(_currentDTO.CommentID);
+        Destroy(this.gameObject);
     }
 }

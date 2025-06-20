@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class CommentsUI : MonoBehaviour
 {
+    [SerializeField] private CommentPostUI _commentPost;
     [SerializeField] private CommentSlotUI _commentSlotUIPrefab;
     [SerializeField] private Transform _slotParent;
     private List<CommentSlotUI> _commentSlots;
@@ -35,6 +36,12 @@ public class CommentsUI : MonoBehaviour
         {
             Refresh();
         }
+    }
+
+    public void SetOnorOff(bool turn)
+    {
+        _commentPost.gameObject.SetActive(turn);
+        _slotParent.gameObject.SetActive(turn);
     }
 
     public void PostClickLoad()

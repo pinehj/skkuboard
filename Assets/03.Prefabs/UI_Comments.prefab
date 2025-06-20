@@ -564,6 +564,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4718015713943369551, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718015713943369551, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718015713943369551, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718015713943369551, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
     - target: {fileID: 6216458581039004627, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_Name
       value: CommentPostUI
@@ -572,6 +588,10 @@ PrefabInstance:
       propertyPath: _commentsUI
       value: 
       objectReference: {fileID: 6069146966099577628}
+    - target: {fileID: 7626378440126254792, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+      propertyPath: _postButtonImage
+      value: 
+      objectReference: {fileID: 6047706376182577113}
     - target: {fileID: 7645518730176782223, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -610,3 +630,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4683770876518711385, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
   m_PrefabInstance: {fileID: 1338702287466659990}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6047706376182577113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4718015713943369551, guid: e1b89559242e3dc4a8e37919b53d71d1, type: 3}
+  m_PrefabInstance: {fileID: 1338702287466659990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,9 @@ public class CommentSlotUI : MonoBehaviour
     {
         _currentDTO = dto;
         _writerName.text = dto.WriterName;
-        _postTime.text = dto.PostTime.ToString();
+
+        DateTime localtime = dto.PostTime.ToLocalTime();
+        _postTime.text = localtime.ToString();
         _content.text = dto.Content;
 
         // 현재 계정과 같으면 삭제 버튼 활성화

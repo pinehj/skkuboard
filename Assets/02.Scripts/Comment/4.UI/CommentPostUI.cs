@@ -7,12 +7,17 @@ public class CommentPostUI : MonoBehaviour
     [SerializeField] private TMP_InputField _inputField;
     [SerializeField] private Button _postButton;
     [SerializeField] private Button _likeButton;
+    [SerializeField] private Image _postButtonImage;
+
+    private Color activeColor = new Color32(0xFA, 0xE1, 0x00, 0xFF);
+    private Color inactiveColor = new Color32(0xE9, 0xE9, 0xE9, 0xFF);
 
     [SerializeField] private CommentsUI _commentsUI; // 댓글 리스트 새로고침용
 
     private void Start()
     {
         _postButton.onClick.AddListener(OnPostButtonClicked);
+        _inputField.onValueChanged.AddListener(OnInputValueChanged);
     }
 
     private void OnPostButtonClicked()
@@ -31,5 +36,12 @@ public class CommentPostUI : MonoBehaviour
 
         // 즉시 리스트 새로고침
         _commentsUI.Refresh();
+    }
+
+    private void OnInputValueChanged(string input)
+    {
+        bool isEmpty = string.IsNullOrWhiteSpace(input);
+        _postButtonImage.color = isEmpty ? inactiveColor : activeColor;
+        _postButton.interactable = !isEmpty;
     }
 }

@@ -2169,7 +2169,7 @@ MonoBehaviour:
   _postTimeText: {fileID: 2362081146564089691}
   _contentText: {fileID: 7922690898535750060}
   _likesCountText: {fileID: 4758226101192018157}
-  _commentsCountText: {fileID: 0}
+  _commentsCountText: {fileID: 3442956779147727871}
   _modifyButton: {fileID: 8885115812895182153}
   _deleteButton: {fileID: 8433959561161447508}
   _likeButton: {fileID: 311755401876964450}
@@ -3139,7 +3139,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4456942102774106600}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4490318051617974737}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5087705390058381554
 GameObject:
   m_ObjectHideFlags: 0

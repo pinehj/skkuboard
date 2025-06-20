@@ -31,6 +31,7 @@ public class CommentManager : Singleton<CommentManager>
     private CommentRepository _repository;
 
     public Action OnLoadAllComments;
+    public Action OnLoadPostComments;
 
     protected override void Start()
     {
@@ -77,6 +78,7 @@ public class CommentManager : Singleton<CommentManager>
         {
             _currentPostComments = entry.Comments;
         }
+        OnLoadPostComments?.Invoke();
     }
 
     public async Task AddComment(string content)

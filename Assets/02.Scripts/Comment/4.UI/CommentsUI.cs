@@ -31,6 +31,8 @@ public class CommentsUI : MonoBehaviour
             // 이 시점에 직접 호출해줘야 이벤트가 발동됨
             _ = CommentManager.Instance.LoadAllComments();
         };
+
+        CommentManager.Instance.OnLoadPostComments += Refresh;
     }
 
     private void Update()

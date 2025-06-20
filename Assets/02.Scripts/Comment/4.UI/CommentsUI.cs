@@ -10,6 +10,9 @@ public class CommentsUI : MonoBehaviour
 
     private List<CommentDTO> _commentDTOs;
 
+    // 테스트용
+    private bool Turn = true;
+
     private void Start()
     {
         _commentSlots = new List<CommentSlotUI>();
@@ -36,6 +39,11 @@ public class CommentsUI : MonoBehaviour
         {
             Refresh();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetOnorOff(Turn);
+            Turn = !Turn;
+        }
     }
 
     public void SetOnorOff(bool turn)
@@ -47,6 +55,16 @@ public class CommentsUI : MonoBehaviour
     public void PostClickLoad()
     {
         // 게시글을 클릭했을 경우 그 게시글의 id에 맞게 댓글 받아옴
+    }
+
+    private async void HandleDeleteSlotRequest(CommentSlotUI slot)
+    {
+        await CommentManager.Instance.DeleteComment(slot.GetDTO().CommentID);
+
+        _commentSlots.Remove(slot);
+        Destroy(slot.gameObject);
+
+        Refresh();
     }
 
     public void Refresh()
@@ -76,6 +94,7 @@ public class CommentsUI : MonoBehaviour
             }
 
             newSlot.RefreshCommentSlot(dto);
+            newSlot.OnRequestDelete += HandleDeleteSlotRequest;
             _commentSlots.Add(newSlot);
         }
     }

@@ -10,6 +10,9 @@ public class CommentSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _content;
     [SerializeField] private Button _deleteButton;
     private CommentDTO _currentDTO;
+    public CommentDTO GetDTO() => _currentDTO;
+
+    public event Action<CommentSlotUI> OnRequestDelete;
 
     public void RefreshCommentSlot(CommentDTO dto)
     {
@@ -32,9 +35,8 @@ public class CommentSlotUI : MonoBehaviour
         }
     }
 
-    public async void OnDeleteButtonClicked()
+    public void OnDeleteButtonClicked()
     {
-        await CommentManager.Instance.DeleteComment(_currentDTO.CommentID);
-        Destroy(this.gameObject);
+        OnRequestDelete?.Invoke(this);
     }
 }

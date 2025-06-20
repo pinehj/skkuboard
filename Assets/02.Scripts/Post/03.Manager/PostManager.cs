@@ -96,6 +96,7 @@ public class PostManager : Singleton<PostManager>
         try
         {
             await _repository.AddPost(newPost.ToDTO());
+            OnDataChanged?.Invoke();
             return true;
         }
         catch(Exception e)
@@ -116,6 +117,7 @@ public class PostManager : Singleton<PostManager>
         try
         {
             await _repository.UpdatePost(post.ToDTO());
+            OnDataChanged?.Invoke();
             return true;
         }
         catch (Exception e)
@@ -188,6 +190,7 @@ public class PostManager : Singleton<PostManager>
         try
         {
             await _repository.DeletePost(id.ToString());
+            OnDataChanged?.Invoke();
             return true;
         }
         catch(Exception e)

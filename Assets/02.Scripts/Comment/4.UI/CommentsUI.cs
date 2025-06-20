@@ -29,17 +29,6 @@ public class CommentsUI : MonoBehaviour
         {
             Refresh();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetOnorOff(Turn);
-            Turn = !Turn;
-        }
-    }
-
-    public void SetOnorOff(bool turn)
-    {
-        _commentPost.gameObject.SetActive(turn);
-        _slotParent.gameObject.SetActive(turn);
     }
 
     public void PostClickLoad()

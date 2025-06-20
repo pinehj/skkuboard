@@ -8,6 +8,7 @@ public class UI_Account : MonoBehaviour
     [Header("[Panels]")]
     public GameObject LoginPanel;
     public GameObject RegisterPanel;
+    public GameObject FindPasswardPanel;
     public GameObject AccountDeletePopup;
 
 
@@ -111,6 +112,12 @@ public class UI_Account : MonoBehaviour
 
         AccountResultMessage result = await AccountManager.Instance.TryLogin(email, passward);
         LoginMessageText.text = result.MessageText;
+    }
+
+    public void OnFindPasswardButton()
+    {
+        LoginPanel.SetActive(false);
+        FindPasswardPanel.SetActive(true);
     }
 
     public void OnRegisterButton()

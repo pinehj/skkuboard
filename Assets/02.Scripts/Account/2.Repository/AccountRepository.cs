@@ -107,7 +107,7 @@ public class AccountRepository
 
     public async Task<AccountResultMessage> DeleteAccount()
     {
-        if (_user != null)
+        if (_user == null)
         {
             return new AccountResultMessage() { MessageText = "로그인 상태가 아닙니다.", IsSuccess = false };
         }
@@ -123,5 +123,26 @@ public class AccountRepository
             Debug.LogError(e);
             return new AccountResultMessage() { MessageText = e.Message, IsSuccess = false };
         }
+    }
+
+    public async Task<AccountResultMessage> ChangePassward(AccountDTO accountDTO)
+    {
+        try
+        {
+            if (_user == null)
+            {
+                return new AccountResultMessage() { MessageText = "로그인 중이 아닙니다.", IsSuccess = false };
+            }
+
+            await _user.UpdatePasswordAsync(accountDTO.Passward);
+            return new AccountResultMessage() { MessageText = "비빌번호가 변경되었습니다.", IsSuccess = true };
+        }
+        catch (FirebaseException e)
+        {
+
+            Debug.LogError(e);
+            return new AccountResultMessage() { MessageText = e.Message, IsSuccess = false };
+        }
+
     }
 }

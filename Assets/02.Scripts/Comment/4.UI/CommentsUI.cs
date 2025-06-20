@@ -29,11 +29,6 @@ public class CommentsUI : MonoBehaviour
         }
     }
 
-    public void PostClickLoad()
-    {
-        // 게시글을 클릭했을 경우 그 게시글의 id에 맞게 댓글 받아옴
-    }
-
     private async void HandleDeleteSlotRequest(CommentSlotUI slot)
     {
         await CommentManager.Instance.DeleteComment(slot.GetDTO().CommentID);

@@ -27,7 +27,7 @@ public class UI_PostSlot : MonoBehaviour
         _postTimeText.text = postDTO.PostTime.ToString();
         _contentText.text = postDTO.Content;
         _likesCountText.text = $"좋아요 {postDTO.Likes.Count}";
-        //_commentsCountText.text = $"{CommentManager.Instance.PostCommentNumbers(_postDTO.ID)} 댓글";
+        //_commentsCountText.text = $"댓글 {CommentManager.Instance.GetCommentCountForPost(postDTO.ID)}";
         if (postDTO.Likes.Contains(new User()
         {
             Email = AccountManager.Instance.User.Email,

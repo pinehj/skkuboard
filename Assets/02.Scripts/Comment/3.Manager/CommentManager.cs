@@ -81,10 +81,14 @@ public class CommentManager : Singleton<CommentManager>
         OnLoadPostComments?.Invoke();
     }
 
-    public int PostCommentNumbers(string postID)
+    public int GetCommentCountForPost(string postID)
     {
         var entry = _postAndComments.Find(p => p.PostID == postID);
-        return entry.Comments?.Count ?? 0;
+        if (entry.Comments != null)
+        {
+            return entry.Comments.Count;
+        }
+        return 0;
     }
 
     public async Task AddComment(string content)

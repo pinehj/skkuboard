@@ -6430,7 +6430,7 @@ PrefabInstance:
     - target: {fileID: 8868242456981421949, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       propertyPath: _commentsUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4284682866711780485}
     - target: {fileID: 9029139882875634507, guid: 20b3c0758cffd7943b2265c69bb3268b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
